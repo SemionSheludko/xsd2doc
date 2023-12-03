@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://ab.report/schema/v1"
+	xmlns="http://ab.report/schema/v1"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:sql="urn:schemas-microsoft-com:mapping-schema">
+	<xs:include schemaLocation="AB.Accounts.xsd" />
+	<xs:include schemaLocation="AB.TCategories.xsd" />
+
+	<xs:element name="TTemplates">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded"	name="TTemplate" type="TTemplateType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="TTemplateType" sql:table="transaction_templates" sql:key-fields="tt_id">
+		<xs:group ref="TTNames"  minOccurs="0" maxOccurs="unbounded"/>
+		<xs:sequence>
+			<xs:element name="Category" type="TCategoryType" minOccurs="0" maxOccurs="1" sql:foreign-keys="tc_id" />
+			<xs:element name="Items">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" name="Item" type="TItemType" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Changes" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Date" type="xs:dateTime" minOccurs="1" maxOccurs="1" sql:field="tt_changedate" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:unsignedByte" use="required" sql:field="tt_id" />
+		<xs:attribute name="code" type="xs:unsignedShort" use="required" sql:field="tt_code" />
+		<xs:attribute name="type" type="xs:string" use="required" sql:field="tt_type" />
+	</xs:complexType>
+
+	<xs:group name="TTNames" maxOccurs="unbounded" sql:table="transaction_templates_names" sql:foreign-keys="tt_id">
+		<xs:all>
+			<xs:element name="Name" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string" sql:field="tt_name">
+							<xs:attribute name="lang" type="xs:string" use="required" sql:field="tt_lang"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+				<xs:annotation>
+					<xs:documentation xml:lang='ru'>Название категории</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string" sql:field="tt_descr">
+							<xs:attribute name="lang" type="xs:string" use="required" sql:field="tt_lang"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+				<xs:annotation>
+					<xs:documentation xml:lang='ru'>Комментарии</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:group>
+
+	<xs:complexType name="TItemType" sql:table="transaction_templates_entries" sql:key-fields="te_id" sql:foreign-keys="tt_id">
+		<xs:sequence>
+			<xs:element name="Account" type="AccountType" minOccurs="0" maxOccurs="1" sql:foreign-keys="acc_id" />
+			<xs:element name="PL" type="AccountType" minOccurs="0" maxOccurs="1" sql:foreign-keys="acc_pl" />
+			<xs:element name="CF" type="AccountType" minOccurs="0" maxOccurs="1" sql:foreign-keys="acc_cf" />
+			<xs:element name="An" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:attribute name="code" type="xs:string" use="required" sql:field="te_an" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Amount" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Account" minOccurs="0" maxOccurs="1">
+							<xs:complexType>
+								<xs:attribute name="id" type="xs:string" use="required" sql:field="te_sum_acc_id" />
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="type" type="xs:string" use="required" sql:field="te_sum_type" />
+					<xs:attribute name="ratio" type="xs:decimal" use="required" sql:field="te_sum_ratio" />
+					<xs:attribute name="code" type="xs:string" use="required" sql:field="te_sum_code" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Comment" type="xs:string" sql:field="te_comment"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:unsignedByte" use="required" sql:field="te_id" />
+		<xs:attribute name="type" type="xs:string" use="required" sql:field="te_type" />
+	</xs:complexType>
+</xs:schema>

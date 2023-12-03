@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://ab.report/schema/v1" xmlns:sql="urn:schemas-microsoft-com:mapping-schema"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ab.report/schema/v1"
+	elementFormDefault="qualified">
+
+	<xs:element name="Projects">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Project" type="ProjectType" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ProjectType" sql:table="Projects" sql:primary-key="Project_id">
+		<xs:sequence>
+			<xs:element name="Area" type="xs:IDREF" sql:field="Ar_Id" />
+			<xs:element name="Name" type="xs:string" sql:field="project_name" />
+			<xs:element name="Description" type="xs:string" sql:field="project_Description" />
+			<xs:element name="PlanStartDate" type="xs:dateTime" sql:field="Project_PlanStartDate" />
+			<xs:element name="PlanEndDate" type="xs:dateTime" sql:field="Project_PlanEndDate" />
+			<xs:element name="ActualStartDate" type="xs:dateTime" sql:field="Project_ActualStartDate" />
+			<xs:element name="ActualEndDate" type="xs:dateTime" sql:field="Project_ActualEndDate" />
+			<xs:element name="State" type="xs:int" sql:field="Project_State" />
+			<xs:element name="PRJ_ChangeUser" type="xs:IDREF" sql:field="Project_ChangeUser" />
+			<xs:element name="PRJ_ChangeDate" type="xs:dateTime" sql:field="Project_ChangeDate" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" sql:id-prefix="PJ" sql:identity="ignore" sql:field="Project_id" />
+	</xs:complexType>
+</xs:schema>
+
+

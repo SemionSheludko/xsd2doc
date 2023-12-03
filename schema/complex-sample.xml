@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<rootElement>
+    <simpleTypes>
+        <string>abc</string>
+        <multiline-string>hello world</multiline-string>
+        <byte>1</byte>
+        <short>2</short>
+        <int>3</int>
+        <long>0</long>
+        <decimal>0.5</decimal>
+        <float>1.1</float>
+        <double>2.2</double>
+        <boolean>true</boolean>
+        <date>2017-03-14</date>
+        <time>02:02:00</time>
+        <dateTime>2017-03-14T14:02:03</dateTime>
+        <anyURI>http://www.github.com</anyURI>
+        <base64Binary>YmxhYXQ=</base64Binary>
+    </simpleTypes>
+    <dates>
+        <date>2017-04-03</date>
+        <time>02:03:04</time>
+        <dateTime>2017-04-03T14:03:04</dateTime>
+        <gDay>---03</gDay>
+        <gMonth>--04</gMonth>
+        <gMonthDay>--04-05</gMonthDay>
+        <gYear>2017</gYear>
+        <gYearMonth>2017-04</gYearMonth>
+    </dates>
+    <durations>
+        <dateDuration>P0D</dateDuration>
+        <timeDuration>PT5M</timeDuration>
+    </durations>
+    <defaults>
+        <defaultString>this is no longer the default value</defaultString>
+        <fixedString>this is a fixed value</fixedString>
+    </defaults>
+    <positiveIntegers>
+        <positiveInteger>10</positiveInteger>
+        <negativeInteger>10</negativeInteger>
+        <unsignedInt>10</unsignedInt>
+        <integer>10</integer>
+    </positiveIntegers>
+    <restrictions>
+        <enumeration>Option 2</enumeration>
+        <fixed-enumeration>Option 3</fixed-enumeration>
+    </restrictions>
+    <extensions>
+        <nestedString>nestedString Option 2</nestedString>
+        <nestedByte>0</nestedByte>
+        <doubleNestedByte>10</doubleNestedByte>
+    </extensions>
+    <occurrencesSimple>a</occurrencesSimple>
+    <occurrencesSimple>b</occurrencesSimple>
+    <occurrencesSimple>c</occurrencesSimple>
+    <occurrencesComplex>
+        <child attribute="1"/>
+    </occurrencesComplex>
+    <occurrencesComplex>
+        <child attribute="2"/>
+    </occurrencesComplex>
+    <occurrencesComplex>
+        <child attribute="3"/>
+    </occurrencesComplex>
+    <complexSimpleContent attribute="attribute">simple content</complexSimpleContent>
+    <choice>
+        <byte>1</byte>
+    </choice>
+</rootElement>

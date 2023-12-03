@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+	targetNamespace="http://ab.report/schema/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:sql="urn:schemas-microsoft-com:mapping-schema" xmlns="http://ab.report/schema/v1">
+	<xs:element name="Segments">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" name="Segment" type="SegmentType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="SegmentType" sql:table="Segments">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Name" sql:field="ar_name" type="xs:string"/>
+			<xs:element minOccurs="0" name="Description" sql:field="ar_description" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute use="optional" name="id" type="xs:unsignedByte" sql:field="ar_id"/>
+		<xs:attribute use="optional" name="status" type="xs:unsignedByte" sql:field="ar_status"/>
+		<xs:attribute use="optional" name="code" type="xs:unsignedByte" sql:field="ar_code"/>
+		<xs:attribute use="optional" name="type" type="xs:unsignedByte" sql:field="ar_type"/>
+	</xs:complexType>
+</xs:schema>

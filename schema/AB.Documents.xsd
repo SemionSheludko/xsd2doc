@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+	xmlns="http://ab.report/schema/v1" targetNamespace="http://ab.report/schema/v1"
+	xmlns:ab="http://ab.report/schema/v1"
+	xmlns:sql="urn:schemas-microsoft-com:mapping-schema"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="AB.TTemplates.xsd" />
+	<xs:include schemaLocation="AB.Projects.xsd" />
+	<xs:include schemaLocation="AB.Segments.xsd" />
+	<xs:include schemaLocation="AB.Currency.xsd" />
+	<xs:include schemaLocation="AB.Accounts.xsd" />
+	<xs:include schemaLocation="AB.RCenters.xsd"/>
+	<xs:include schemaLocation="AB.Contracts.xsd"/>
+	<xs:include schemaLocation="AB.Items.xsd" />
+	<xs:include schemaLocation="AB.BusinessPartners.xsd" />
+	<xs:include schemaLocation="AB.UoM.xsd" />
+
+	<xs:element name="Documents">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Document" type="DocumentType" maxOccurs="unbounded" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="DocumentType" sql:table="documents" sql:key-fields="doc_id">
+		<xs:sequence>
+			<xs:element name="Type" type="TypeComplexType" sql:foreign-keys="dt_id"/>
+			<xs:element name="Date" type="xs:dateTime" sql:field="doc_date"/>
+			<xs:element name="No" type="xs:string" sql:field="doc_no"/>
+			<xs:element name="BusinessPartner" type="BusinessPartnersType" maxOccurs="unbounded"/>
+			<xs:element name="Template" type="TTemplateTypeE" maxOccurs="1" sql:foreign-keys="tt_id"/>
+			<xs:element name="RCenter" type="RCenterType" maxOccurs="1" sql:foreign-keys="frc_id"/>
+			<xs:element name="Entity" type="EntityComplexType" maxOccurs="1" sql:foreign-keys="et_id"/>
+			<xs:element name="Segment" type="SegmentType" maxOccurs="1" sql:foreign-keys="ar_id"/>
+			<xs:element name="Project" type="ProjectTypeE" maxOccurs="1" sql:foreign-keys="project_id"/>
+			<xs:element name="Contract" type="ContractType" maxOccurs="1" sql:foreign-keys="agr_id"/>
+			<xs:element name="Employee" type="EmployeeComplexType" maxOccurs="1" sql:foreign-keys="sm_id"/>
+			<xs:element name="AmountsAndTaxes">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" name="Amount" type="AmountsAndTaxesType" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Period">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Start" type="xs:date" maxOccurs="1" sql:field="doc_pstart" />
+						<xs:element name="End" type="xs:date" maxOccurs="1" sql:field="doc_pend" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Accounts">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" maxOccurs="unbounded"	name="Account" type="AccountsTypeE"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Description" type="xs:string" sql:field="doc_descr"/>
+			<xs:element name="Changes">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Date" type="xs:dateTime" sql:field="doc_changedate" />
+						<xs:element name="User" type="UserComplexType" sql:foreign-keys="doc_changeuser"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Rows">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" name="Row" type="RowType" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:unsignedShort" use="required" sql:field="doc_id" />
+		<xs:attribute name="guid" type="xs:string" use="optional" sql:field="doc_guid" />
+		<xs:attribute name="guidext" type="xs:unsignedByte" use="optional" sql:field="doc_guid_ext" />
+		<xs:attribute name="state" type="xs:string" use="required" sql:field="doc_state" />
+	</xs:complexType>
+	<xs:complexType name="RowType" sql:table="documents_items" sql:key-fields="di_id" sql:foreign-keys="doc_id">
+		<xs:sequence>
+			<xs:element name="Item" type="ItemType" sql:foreign-keys="com_id"/>
+			<xs:element name="UoM" type="UoMType" sql:foreign-keys="uom_id"/>
+			<xs:element name="Qty" type="xs:decimal" sql:field="di_qty"/>
+			<xs:element name="Price" type="xs:decimal" sql:field="di_price"/>
+			<xs:element name="BasePrice" type="xs:decimal" sql:field="di_balanceprice"/>
+			<xs:element name="Sum" type="xs:decimal" sql:field="di_sum"/>
+			<xs:element name="Tax">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:decimal" sql:field="di_vat">
+							<xs:attribute name="code" fixed="VAT" type="xs:string" use="required" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:unsignedShort" use="required" sql:field="di_id" />
+	</xs:complexType>
+	<xs:complexType name="AmountsAndTaxesType" sql:table="documents_amount" sql:key-fields="doc_id am_id" sql:foreign-keys="doc_id">
+		<xs:simpleContent>
+			<xs:extension base="xs:decimal" sql:field="da_amount">
+				<xs:attributeGroup ref="AmountTypes" sql:foreign-keys="am_id"/>
+				<xs:attributeGroup ref="CurTypes" sql:foreign-keys="cur_id"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:attributeGroup  name="AmountTypes" sql:table="amount_types" sql:key-fields="am_id">
+		<xs:attribute name="id" type="xs:string" sql:field="am_id" />
+		<xs:attribute name="type" type="xs:string" use="required" sql:field="am_code" />
+	</xs:attributeGroup >
+	<xs:attributeGroup  name="CurTypes" sql:table="currency" sql:key-fields="cur_id">
+		<xs:attribute name="currency" type="xs:string" use="required" sql:field="cur_code" />
+	</xs:attributeGroup >
+	<xs:complexType name="AccountsTypeE" sql:table="documents_accounts" sql:foreign-keys="doc_id">
+		<xs:complexContent>
+			<xs:extension base="AccountsRestrType" sql:foreign-keys="acc_id">
+				<xs:attribute name="role" type="xs:string" use="required" sql:field="da_role" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AccountsRestrType">
+		<xs:complexContent>
+			<xs:restriction base="AccountType">
+				<xs:sequence>
+					<xs:element name="Name"/>
+				</xs:sequence>
+				<xs:attribute name="id"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="BusinessPartnersType" sql:table="documents_partners" sql:foreign-keys="doc_id">
+		<xs:complexContent>
+			<xs:extension base="BusinessPartnerType" sql:foreign-keys="ep_id">
+				<xs:attribute name="role" type="xs:string" use="required" sql:field="dp_role" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProjectTypeE">
+		<xs:complexContent>
+			<xs:restriction base="ProjectType">
+				<xs:sequence>
+					<xs:element name="Name"/>
+				</xs:sequence>
+				<xs:attribute name="id"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TTemplateTypeE">
+		<xs:complexContent>
+			<xs:restriction base="TTemplateType">
+				<xs:sequence>
+					<xs:element name="Name"/>
+				</xs:sequence>
+				<xs:attribute name="id"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeComplexType" sql:table="documents_templates" sql:key-fields="dt_id">
+		<xs:attribute use="required" name="id" type="xs:int" sql:field="dt_id"></xs:attribute>
+		<xs:attribute use="required" name="dir" type="xs:string" sql:field="dt_dir"></xs:attribute>
+		<xs:attribute use="required" name="code" type="xs:string" sql:field="dt_code"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="EntityComplexType" sql:table="entities" sql:key-fields="et_id">
+		<xs:sequence>
+			<xs:element name="BusinessPartner" type="BusinessPartnerType" sql:foreign-keys="ep_id"/>
+		</xs:sequence>
+		<xs:attribute use="required" name="id" type="xs:int" sql:field="et_id"/>
+	</xs:complexType>
+	<xs:complexType name="EmployeeComplexType" sql:table="sales_managers" sql:key-fields="sm_id">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" sql:field="sm_name"/>
+		</xs:sequence>
+		<xs:attribute use="required" name="id" type="xs:int" sql:field="sm_id"/>
+	</xs:complexType>
+	<xs:complexType name="UserComplexType" sql:table="users" sql:key-fields="user_id">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" sql:field="user_name"/>
+		</xs:sequence>
+		<xs:attribute use="required" name="id" type="xs:unsignedByte" sql:field="user_id"/>
+	</xs:complexType>
+</xs:schema>

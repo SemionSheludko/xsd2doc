@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+	targetNamespace="http://ab.report/schema/v1" xmlns="http://ab.report/schema/v1" xmlns:ab="http://ab.report/schema/v1"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sql="urn:schemas-microsoft-com:mapping-schema">
+	<xs:include schemaLocation="AB.Currency.xsd" />
+
+	<xs:element name="Accounts">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" name="Account" type="AccountType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="AccountType" sql:table="accounts" sql:key-fields="acc_id">
+		<xs:group ref="AccLabels"  minOccurs="0" maxOccurs="unbounded"/>
+		<xs:sequence>
+			<xs:element name="Currency" type="CurrencyTypeRestr" minOccurs="0" maxOccurs="1" sql:foreign-keys="cur_id" />
+			<xs:element name="Changes" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Date" type="xs:dateTime" minOccurs="1" maxOccurs="1" sql:field="acc_changedate" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:unsignedByte" use="required" sql:field="acc_id" sql:identity="useValue" sql:prefix="A" />
+		<xs:attribute name="under" type="xs:unsignedByte" use="optional" sql:field="acc_under" />
+		<xs:attribute name="code" type="xs:unsignedShort" use="required" sql:field="acc_code" />
+		<xs:attribute name="status" type="xs:unsignedByte" use="optional" sql:field="acc_status" />
+		<xs:attribute name="type" use="required" sql:field="acc_type">
+			<xs:simpleType>
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="A" />
+					<xs:enumeration value="L" />
+					<xs:enumeration value="C" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="pltype" type="xs:string" use="optional" sql:field="acc_pl" />
+		<xs:attribute name="skipzero" type="xs:string" use="optional" sql:field="acc_skipzero" />
+	</xs:complexType>
+
+	<xs:complexType name="CurrencyTypeRestr">
+		<xs:complexContent>
+			<xs:restriction base="CurrencyType">
+				<xs:attribute name="id"/>
+				<xs:attribute name="code"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:group name="AccLabels" maxOccurs="unbounded" sql:table="accountslocales" sql:foreign-keys="acc_id">
+		<xs:all>
+			<xs:element name="Name" minOccurs="1" maxOccurs="1">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string" sql:field="acc_name">
+							<xs:attribute name="lang" type="xs:string" use="required" sql:field="acc_lang"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+				<xs:annotation>
+					<xs:documentation xml:lang='ru'>Название счета</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" minOccurs="0" maxOccurs="1" sql:field="acc_descr">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="lang" type="xs:string" use="required" sql:field="acc_lang"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+				<xs:annotation>
+					<xs:documentation xml:lang='ru'>Комментарии</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DrFriendlyName" minOccurs="0" maxOccurs="1" type="xs:string" sql:field="acc_debetname">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="lang" type="xs:string" use="required" sql:field="acc_lang"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CrFriendlyName" minOccurs="0" maxOccurs="1" type="xs:string" sql:field="acc_creditname">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="lang" type="xs:string" use="required" sql:field="acc_lang"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:group>
+
+</xs:schema>

@@ -1,0 +1,188 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>xsd2htm app</title>
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
+		<link href="themes/bootstrap/forms.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<h4 class="list-group-item-heading">service<small>(/service)</small>
+				</h4>
+				<i>
+				The app:service element is the container for service information associated with one or more Workspaces.
+			</i>
+				<p class="list-group-item-text"></p>
+				<ul class="list-group" style="margin-bottom:0">
+					<li class="list-group-item">
+						<h4 class="list-group-item-heading">author<small>(/service/author)</small>
+						</h4>
+						<i>Author</i>
+						<p class="list-group-item-text"> optional
+</p>
+						<ul class="list-group" style="margin-bottom:0">
+							<li class="list-group-item">
+								<h4 class="list-group-item-heading">name<small>(/service/author/name)</small>
+								</h4>
+								<i>Human-readable name for the person</i>
+								<p class="list-group-item-text">xs:string required
+</p>
+							</li>
+							<li class="list-group-item">
+								<h4 class="list-group-item-heading">uri<small>(/service/author/uri)</small>
+								</h4>
+								<i>IRI associated with the person</i>
+								<p class="list-group-item-text">xs:anyURI optional
+</p>
+							</li>
+							<li class="list-group-item">
+								<h4 class="list-group-item-heading">email<small>(/service/author/email)</small>
+								</h4>
+								<i>E-mail address</i>
+								<p class="list-group-item-text"> optional
+<p class="list-group-item-text">Restriction of xs:normalizedString
+	Pattern: \w+@(\w+\.)+\w+</p>
+								</p>
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item">
+						<h4 class="list-group-item-heading">workspace<small>(/service/workspace)</small>
+						</h4>
+						<i>Workspaces are server-defined groups of Collections.  
+					The "app:workspace" element contains zero or more app:collection elements
+					describing the Collections of Resources available for editing.
+					</i>
+						<p class="list-group-item-text"> required
+
+	unbounded
+</p>
+						<ul class="list-group" style="margin-bottom:0">
+							<li class="list-group-item">
+								<h4 class="list-group-item-heading">title<small>(/service/workspace/title)</small>
+								</h4>
+								<i>Human-readable title for the Workspace.</i>
+								<p class="list-group-item-text">
+				xs:string
+			 required
+</p>
+								<ul class="list-group" style="margin-bottom:0">
+									<li class="list-group-item">
+										<h4 class="list-group-item-heading">type<small>(/service/workspace/title/@type)</small>
+										</h4>
+										<p class="list-group-item-text">
+											<p class="list-group-item-text">Restriction of xs:token
+	Enumeration:
+	text,html,xhtml</p>
+										</p>
+									</li>
+								</ul>
+							</li>
+							<li class="list-group-item">
+								<h4 class="list-group-item-heading">collection<small>(/service/workspace/collection)</small>
+								</h4>
+								<i>Describes a Collection</i>
+								<p class="list-group-item-text"> optional
+
+	unbounded
+</p>
+								<ul class="list-group" style="margin-bottom:0">
+									<li class="list-group-item">
+										<h4 class="list-group-item-heading">href<small>(/service/workspace/collection/@href)</small>
+										</h4>
+										<i>The IRI of the Collection</i>
+										<p class="list-group-item-text">xs:anyURI</p>
+									</li>
+									<li class="list-group-item">
+										<h4 class="list-group-item-heading">title<small>(/service/workspace/collection/title)</small>
+										</h4>
+										<i>A human-readable title for the Collection</i>
+										<p class="list-group-item-text">
+				xs:string
+			 required
+</p>
+										<ul class="list-group" style="margin-bottom:0">
+											<li class="list-group-item">
+												<h4 class="list-group-item-heading">type<small>(/service/workspace/collection/title/@type)</small>
+												</h4>
+												<p class="list-group-item-text">
+													<p class="list-group-item-text">Restriction of xs:token
+	Enumeration:
+	text,html,xhtml</p>
+												</p>
+											</li>
+										</ul>
+									</li>
+									<li class="list-group-item">
+										<h4 class="list-group-item-heading">accept<small>(/service/workspace/collection/accept)</small>
+										</h4>
+										<i>A media range as defined in [RFC2616]. The media range specifies a type of representation that can be POSTed to a Collection.</i>
+										<p class="list-group-item-text">xs:string optional
+
+	unbounded
+</p>
+									</li>
+									<li class="list-group-item">
+										<h4 class="list-group-item-heading">categories<small>(/service/workspace/collection/categories)</small>
+										</h4>
+										<i>Provides a list of the categories that can be applied to the members of a Collection.</i>
+										<p class="list-group-item-text"> optional
+
+	unbounded
+</p>
+										<ul class="list-group" style="margin-bottom:0">
+											<li class="list-group-item">
+												<h4 class="list-group-item-heading">fixed<small>(/service/workspace/collection/categories/@fixed)</small>
+												</h4>
+												<i>Value of either "yes" or "no", indicating whether the list of
+   categories is a fixed or an open set.  The absence of the "fixed"
+   attribute is equivalent to the presence of a "fixed" attribute with a
+   value of "no".
+				</i>
+												<p class="list-group-item-text">
+													<p class="list-group-item-text">Restriction of xs:string
+	Enumeration:
+	yes,no</p>
+												</p>
+											</li>
+											<li class="list-group-item">
+												<h4 class="list-group-item-heading">category<small>(/service/workspace/collection/categories/category)</small>
+												</h4>
+												<i>Provides a list of the categories that can be applied to the members of a Collection.</i>
+												<p class="list-group-item-text"> optional
+
+	unbounded
+</p>
+												<ul class="list-group" style="margin-bottom:0">
+													<li class="list-group-item">
+														<h4 class="list-group-item-heading">scheme<small>(/service/workspace/collection/categories/category/@scheme)</small>
+														</h4>
+														<i>An IRI that identifies a categorization scheme</i>
+														<p class="list-group-item-text">xs:anyURI</p>
+													</li>
+													<li class="list-group-item">
+														<h4 class="list-group-item-heading">term<small>(/service/workspace/collection/categories/category/@term)</small>
+														</h4>
+														<i>The "term" attribute is a string that identifies the category</i>
+														<p class="list-group-item-text">xs:string</p>
+													</li>
+													<li class="list-group-item">
+														<h4 class="list-group-item-heading">label<small>(/service/workspace/collection/categories/category/@label)</small>
+														</h4>
+														<i>Provides a human-readable label for display in end-user applications.</i>
+														<p class="list-group-item-text">xs:string</p>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+	<link href="css/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+</html>

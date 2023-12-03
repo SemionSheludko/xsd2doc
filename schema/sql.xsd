@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+	targetNamespace="urn:schemas-microsoft-com:mapping-schema"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sql="urn:schemas-microsoft-com:mapping-schema">
+	<xs:attribute name="table" type="xs:string" />
+	<xs:attribute name="field" type="xs:string" />
+	<xs:attribute name="prefix" type="xs:string" />
+	<xs:attribute name="key-fields" type="xs:string"></xs:attribute>
+	<xs:attribute name="foreign-keys" type="xs:string"></xs:attribute>
+	<xs:attribute name="use-cdata" type="xs:boolean" />
+	<xs:attribute name="datatype" type="xs:string"></xs:attribute>
+
+	<xs:attribute name="hide" type="xs:boolean"></xs:attribute>
+
+	<xs:attribute name="encode" type="xs:string"></xs:attribute>
+
+	<xs:attribute name="identity" type="xs:string" fixed="useValue"></xs:attribute>
+
+	<xs:attribute name="guid">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="generate"></xs:enumeration>
+				<xs:enumeration value="useValue"></xs:enumeration>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+</xs:schema>

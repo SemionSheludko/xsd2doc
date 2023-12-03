@@ -1,0 +1,411 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>xsd2htm test</title>
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
+		<link href="themes/bootstrap/forms.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div class="container">
+			<form class="form-horizontal validate-form">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1>Test Form (description from Root Element)</h1>
+					</div>
+					<div class="panel-body">
+						<legend>Simple xs:* types with default restrictions:</legend>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesstring" class="col-sm-2 control-label">string</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesstring" name="rootElementsimpleTypesstring" type="text" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesmultiline-string" class="col-sm-2 control-label">multiline-string</label>
+							<div class="col-sm-10">
+								<textarea class="form-control" id="rootElementsimpleTypesmultiline-string" name="rootElementsimpleTypesmultiline-string" rows="5"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesbyte" class="col-sm-2 control-label">byte (-128 to 127)</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesbyte" name="rootElementsimpleTypesbyte" type="number" min="-128" max="127" step="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesshort" class="col-sm-2 control-label">short</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesshort" name="rootElementsimpleTypesshort" type="number" min="-32768" max="32767" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesint" class="col-sm-2 control-label">int</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesint" name="rootElementsimpleTypesint" type="number" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypeslong" class="col-sm-2 control-label">long</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypeslong" name="rootElementsimpleTypeslong" type="number" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesdecimal" class="col-sm-2 control-label">decimal</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesdecimal" name="rootElementsimpleTypesdecimal" type="number" step="0.01" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesfloat" class="col-sm-2 control-label">float</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesfloat" name="rootElementsimpleTypesfloat" type="number" step="0.01" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesdouble" class="col-sm-2 control-label">double</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesdouble" name="rootElementsimpleTypesdouble" type="number" step="0.01" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesboolean" class="col-sm-2 control-label">boolean</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesboolean" name="rootElementsimpleTypesboolean" type="checkbox" style="width: 30px;" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesdate" class="col-sm-2 control-label">date</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesdate" name="rootElementsimpleTypesdate" type="date" step="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypestime" class="col-sm-2 control-label">time</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypestime" name="rootElementsimpleTypestime" type="time" step="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesdateTime" class="col-sm-2 control-label">dateTime</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesdateTime" name="rootElementsimpleTypesdateTime" type="datetime-local" step="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesanyURI" class="col-sm-2 control-label">anyURI</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesanyURI" name="rootElementsimpleTypesanyURI" type="url" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementsimpleTypesbase64Binary" class="col-sm-2 control-label">base64Binary</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementsimpleTypesbase64Binary" name="rootElementsimpleTypesbase64Binary" type="file" value=""></input>
+							</div>
+						</div>
+						<legend>dates</legend>
+						<div class="form-group">
+							<label for="irootElementdatesdate" class="col-sm-2 control-label">date</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementdatesdate" name="rootElementdatesdate" type="date" step="1" value="2017-11-02"></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementdatestime" class="col-sm-2 control-label">time</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementdatestime" name="rootElementdatestime" type="time" step="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementdatesdateTime" class="col-sm-2 control-label">dateTime</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementdatesdateTime" name="rootElementdatesdateTime" type="datetime-local" step="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementdatesgDay" class="col-sm-2 control-label">gDay</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementdatesgDay" name="rootElementdatesgDay" type="number" min="1" max="31" step="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementdatesgMonth" class="col-sm-2 control-label">gMonth</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementdatesgMonth" name="rootElementdatesgMonth" type="number" min="1" max="12" step="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementdatesgMonthDay" class="col-sm-2 control-label">gMonthDay</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementdatesgMonthDay" name="rootElementdatesgMonthDay" type="date" step="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementdatesgYear" class="col-sm-2 control-label">gYear</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementdatesgYear" name="rootElementdatesgYear" type="number" min="1700" max="2700" step="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementdatesgYearMonth" class="col-sm-2 control-label">gYearMonth</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementdatesgYearMonth" name="rootElementdatesgYearMonth" type="month" step="1" value=""></input>
+							</div>
+						</div>
+						<legend>Various durations:</legend>
+						<div class="form-group">
+							<label for="irootElementdurationsdateDuration" class="col-sm-2 control-label">dateDuration</label>
+							<div class="col-sm-10">
+								<div class="input-group">
+									<div class="input-group-addon duration-value" id="v-rootElementdurationsdateDuration"></div>
+									<input class="form-control" id="rootElementdurationsdateDuration" name="rootElementdurationsdateDuration" type="range" step="1" value="" pattern="P\d{1,3}D"></input>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementdurationstimeDuration" class="col-sm-2 control-label">timeDuration</label>
+							<div class="col-sm-10">
+								<div class="input-group">
+									<div class="input-group-addon duration-value" id="v-rootElementdurationstimeDuration"></div>
+									<input class="form-control" id="rootElementdurationstimeDuration" name="rootElementdurationstimeDuration" type="range" step="1" value="" min="PT1M" max="PT10M" pattern="PT\d{1,2}M"></input>
+								</div>
+							</div>
+						</div>
+						<legend>Simple elements with default and fixed values:</legend>
+						<div class="form-group">
+							<label for="irootElementdefaultsdefaultString" class="col-sm-2 control-label">defaultString</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementdefaultsdefaultString" name="rootElementdefaultsdefaultString" type="text" value="this is the default value"></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementdefaultsfixedString" class="col-sm-2 control-label">fixedString</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementdefaultsfixedString" name="rootElementdefaultsfixedString" type="text" readonly="readonly" value="this is a fixed value"></input>
+							</div>
+						</div>
+						<legend>Integers that all allow only positive values:</legend>
+						<div class="form-group">
+							<label for="irootElementpositiveIntegerspositiveInteger" class="col-sm-2 control-label">positiveInteger</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementpositiveIntegerspositiveInteger" name="rootElementpositiveIntegerspositiveInteger" type="number" min="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementpositiveIntegersnegativeInteger" class="col-sm-2 control-label">negativeInteger</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementpositiveIntegersnegativeInteger" name="rootElementpositiveIntegersnegativeInteger" type="number" min="0" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementpositiveIntegersunsignedInt" class="col-sm-2 control-label">unsignedInt</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementpositiveIntegersunsignedInt" name="rootElementpositiveIntegersunsignedInt" type="number" min="0" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementpositiveIntegersinteger" class="col-sm-2 control-label">integer with min restriction</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementpositiveIntegersinteger" name="rootElementpositiveIntegersinteger" type="number" value="" min="0"></input>
+							</div>
+						</div>
+						<legend>Simple type with enumerations:</legend>
+						<div class="form-group">
+							<label for="irootElementrestrictionsenumeration" class="col-sm-2 control-label">enumeration</label>
+							<div class="col-sm-10">
+								<select id="rootElementrestrictionsenumeration" name="rootElementrestrictionsenumeration" class="form-control">
+									<option value="Option 1">Option 1</option>
+									<option value="Option 2">Option 2</option>
+									<option value="Option 3">Option 3</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementrestrictionsfixed-enumeration" class="col-sm-2 control-label">fixed-enumeration</label>
+							<div class="col-sm-10">
+								<select id="rootElementrestrictionsfixed-enumeration" name="rootElementrestrictionsfixed-enumeration" class="form-control" readonly="readonly">
+									<option value="Option 1">Option 1</option>
+									<option value="Option 2">Option 2</option>
+									<option value="Option 3" selected="selected">Option 3</option>
+								</select>
+							</div>
+						</div>
+						<legend>Various nested (and double nested) extensions:</legend>
+						<div class="form-group">
+							<label for="irootElementextensionsnestedString" class="col-sm-2 control-label">nestedString-type determines the enumaration values</label>
+							<div class="col-sm-10">
+								<select id="rootElementextensionsnestedString" name="rootElementextensionsnestedString" class="form-control">
+									<option value="nestedString Option 1">nestedString Option 1</option>
+									<option value="nestedString Option 2">nestedString Option 2</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementextensionsnestedByte" class="col-sm-2 control-label">nestedByte-type restricts the byte to min=0</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementextensionsnestedByte" name="rootElementextensionsnestedByte" type="number" max="127" step="1" value="" min="0"></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementextensionsdoubleNestedByte" class="col-sm-2 control-label">doubleNestedByte-type restricts nestedByte to max=10</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementextensionsdoubleNestedByte" name="rootElementextensionsdoubleNestedByte" type="" value="" max="10"></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementoccurrencesSimple" class="col-sm-2 control-label">Recurring simple</label>
+							<div class="col-sm-10">
+								<div class="row">
+									<div class="col-sm-4">
+										<input class="form-control" id="rootElementoccurrencesSimple" name="rootElementoccurrencesSimple" type="text" value=""></input>
+									</div>
+									<div class="col-sm-4">
+										<input class="form-control" id="rootElementoccurrencesSimple" name="rootElementoccurrencesSimple" type="text" value=""></input>
+									</div>
+									<div class="col-sm-4">
+										<input class="form-control" id="rootElementoccurrencesSimple" name="rootElementoccurrencesSimple" type="text" value=""></input>
+									</div>
+								</div>
+							</div>
+						</div>
+						<legend>Recurring complex with maxOccurs="3"</legend>
+						<table class="table" id="reccuring_rootElementoccurrencesComplex">
+							<thead>
+								<tr>
+									<th>attribute</th>
+									<th>child</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<div class="form-group">
+										<label for="irootElementoccurrencesComplexattribute" class="col-sm-2 control-label">attribute</label>
+										<div class="col-sm-10">
+											<input class="form-control" id="rootElementoccurrencesComplexattribute" name="rootElementoccurrencesComplexattribute" type="number" min="-128" max="127" step="1" value=""></input>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="irootElementoccurrencesComplexchild" class="col-sm-2 control-label">child</label>
+										<div class="col-sm-10">
+											<input class="form-control" id="rootElementoccurrencesComplexchild" name="rootElementoccurrencesComplexchild" type="text" value=""></input>
+										</div>
+									</div>
+								</tr>
+								<tr>
+									<div class="form-group">
+										<label for="irootElementoccurrencesComplexattribute" class="col-sm-2 control-label">attribute</label>
+										<div class="col-sm-10">
+											<input class="form-control" id="rootElementoccurrencesComplexattribute" name="rootElementoccurrencesComplexattribute" type="number" min="-128" max="127" step="1" value=""></input>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="irootElementoccurrencesComplexchild" class="col-sm-2 control-label">child</label>
+										<div class="col-sm-10">
+											<input class="form-control" id="rootElementoccurrencesComplexchild" name="rootElementoccurrencesComplexchild" type="text" value=""></input>
+										</div>
+									</div>
+								</tr>
+								<tr>
+									<div class="form-group">
+										<label for="irootElementoccurrencesComplexattribute" class="col-sm-2 control-label">attribute</label>
+										<div class="col-sm-10">
+											<input class="form-control" id="rootElementoccurrencesComplexattribute" name="rootElementoccurrencesComplexattribute" type="number" min="-128" max="127" step="1" value=""></input>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="irootElementoccurrencesComplexchild" class="col-sm-2 control-label">child</label>
+										<div class="col-sm-10">
+											<input class="form-control" id="rootElementoccurrencesComplexchild" name="rootElementoccurrencesComplexchild" type="text" value=""></input>
+										</div>
+									</div>
+								</tr>
+							</tbody>
+						</table>
+						<legend>Recurring complex with maxOccurs="unbounded"</legend>
+						<table class="table" id="reccuring_rootElementoccurrencesComplexUnbounded">
+							<thead>
+								<tr>
+									<th>attribute</th>
+									<th>child_int</th>
+									<th>child</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<div class="form-group">
+										<label for="irootElementoccurrencesComplexUnboundedattribute" class="col-sm-2 control-label">attribute</label>
+										<div class="col-sm-10">
+											<input class="form-control" id="rootElementoccurrencesComplexUnboundedattribute" name="rootElementoccurrencesComplexUnboundedattribute" type="number" min="-128" max="127" step="1" value=""></input>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="irootElementoccurrencesComplexUnboundedchild_int" class="col-sm-2 control-label">child_int</label>
+										<div class="col-sm-10">
+											<input class="form-control" id="rootElementoccurrencesComplexUnboundedchild_int" name="rootElementoccurrencesComplexUnboundedchild_int" type="number" value=""></input>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="irootElementoccurrencesComplexUnboundedchild" class="col-sm-2 control-label">child</label>
+										<div class="col-sm-10">
+											<select id="rootElementoccurrencesComplexUnboundedchild" name="rootElementoccurrencesComplexUnboundedchild" class="form-control">
+												<option value="Child Option 1">Child Option 1</option>
+												<option value="Child Option 2">Child Option 2</option>
+											</select>
+										</div>
+									</div>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<a href="javascript:addnewrow('reccuring_rootElementoccurrencesComplexUnbounded')">Add new row</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<legend>Complex element with simple content</legend>
+						<div class="form-group">
+							<label for="irootElementcomplexSimpleContentattribute" class="col-sm-2 control-label">attribute</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementcomplexSimpleContentattribute" name="rootElementcomplexSimpleContentattribute" type="text" value="" required="required"></input>
+							</div>
+						</div>
+						<legend>Element with xs:choice:</legend>
+						<div class="form-group">
+							<label for="irootElementchoicebyte" class="col-sm-2 control-label">byte</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementchoicebyte" name="rootElementchoicebyte" type="number" min="-128" max="127" step="1" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementchoiceshort" class="col-sm-2 control-label">short</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementchoiceshort" name="rootElementchoiceshort" type="number" min="-32768" max="32767" value=""></input>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="irootElementchoicelong" class="col-sm-2 control-label">long</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="rootElementchoicelong" name="rootElementchoicelong" type="number" value=""></input>
+							</div>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="alert alert-danger" style="display:none"></div>
+						<div class="btn-toolbar">
+							<button id="edit-form-submit" type="submit" class="btn btn-primary" title="Save">
+								<i class="fa fa-check"></i><span>Submit</span></button>
+							<button id="form-back" type="button" class="btn btn-back" onclick="history.go(-1)">
+								<i class="fa fa-arrow-left"></i><span class="hidden-xs">Cancel</span></button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+	<link href="css/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.validator.js"></script>
+	<script type="text/javascript" src="js/typeahead.bundle.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/calendar.js"></script>
+	<script type="text/javascript" src="js/xsd2xhtmlForm.js"></script>
+</html>

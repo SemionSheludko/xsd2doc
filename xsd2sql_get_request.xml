@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xqbe="http://abcmf.net/schema/xqbe/v1">
+  <SOAP-ENV:Header>
+    <xqbe:EnvHeader>
+      <xqbe:Client>bgk</xqbe:Client>
+      <xqbe:Method>info</xqbe:Method>
+      <xqbe:Page>2</xqbe:Page>
+      <xqbe:PageSize>10</xqbe:PageSize>
+      <xqbe:Sort type="asc">/Accounts/Account/@code</xqbe:Sort>
+    </xqbe:EnvHeader>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+	<TTemplates xmlns="http://ab.report/schema/v1">
+		<TTemplate id="15" type="" code="">
+			<Name lang='ru'/>
+			<Description lang='ru'/>
+			<Category id="">
+				<Name lang='ru'/>
+			</Category>
+			<Items>
+				<Item id="" type="">
+					<Account id=""><Name lang='ru'/></Account>
+					<PL id=""><Name lang='ru'/></PL>
+					<CF id=""><Name lang='ru'/></CF>
+					<An code=""/>
+					<Amount type="" ratio="" code="">
+						<Account id=""/>
+					</Amount>
+					<Comment />
+				</Item>
+			</Items>
+		</TTemplate>
+	</TTemplates>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

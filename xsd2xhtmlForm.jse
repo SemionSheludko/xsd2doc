@@ -1,0 +1,34 @@
+/*try {*/
+    var objInputDocument = new ActiveXObject("Msxml2.FreeThreadedDOMDocument.6.0");
+    var objOutputDocument = new ActiveXObject("Msxml2.FreeThreadedDOMDocument.6.0");
+    var xslDoc = new ActiveXObject("Msxml2.FreeThreadedDOMDocument.6.0");
+
+    xslDoc.async = false;
+    xslDoc.setProperty("ResolveExternals", true);
+    xslDoc.setProperty("AllowDocumentFunction", true);
+    xslDoc.load("xsd2xhtmlFormTest.xsl");
+    if (xslDoc.parseError.errorCode != 0) {
+        var myErr = xslDoc.parseError;
+        WScript.Echo("You have error " + myErr.reason + ",line " + myErr.line);
+    }
+    else {
+        objInputDocument.async = false;
+        objInputDocument.load("schema/complex-sample.xsd");
+        if (objInputDocument.parseError.errorCode != 0) {
+            var myErr = objInputDocument.parseError;
+            WScript.Echo("You have error (query) " + myErr.reason + ",line " + myErr.line);
+        }
+
+        var xslt = new ActiveXObject("Msxml2.XSLTemplate.6.0");
+        xslt.stylesheet = xslDoc;
+        var xslProc = xslt.createProcessor();
+        xslProc.input = objInputDocument;
+        xslProc.output = objOutputDocument;
+        xslProc.transform();
+        objOutputDocument.save("xsd2xhtmForm.xhtml");
+    }
+
+    WScript.Echo('OK');
+/*} catch (e) {
+    WScript.Echo("Error: " + e.description);
+}*/

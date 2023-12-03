@@ -1,0 +1,325 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>xsd2htm ab</title>
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
+		<link href="themes/bootstrap/forms.css" rel="stylesheet"/>
+		<style>
+			.code {
+				padding: 5px;
+				margin: 0;
+				font-family: Consolas,Courier,monospace!important;
+				font-style: normal;
+				font-weight: normal;
+				overflow: auto;
+				word-wrap: normal;
+				border-left: solid 1px #939393;
+				border-bottom: solid 1px #939393;
+				border-right: solid 1px #939393;
+				border-top: solid 1px #939393;
+				clear: both;
+				margin-bottom: 12px;
+				position: relative;
+			}
+			.lt {color: Blue;} 
+			.tn {color: #A31515; font-weight: bold;}
+			.at {color: Red;}
+			.av {color: Blue;} 
+			.atv {color: Blue;}
+			.comment {color: Green;}
+			.block {display:block;}
+			.i1 {margin-left: 5px;}
+			.i2 {margin-left: 20px;}
+			.i3 {margin-left: 35px;}
+			.i4 {margin-left: 50px;}
+			.i5 {margin-left: 65px;}
+			.i6 {margin-left: 80px;}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="code">
+				<span class="i1 lt">&lt;</span><span class="tn">Documents</span>
+				<span class="at">xmlns="http://ab.report/schema/v1"</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i2">&lt;!--  <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i2 lt">&lt;</span><span class="tn">Document</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedShort
+-<b>required</b>"</span>
+				<span class="at">guid</span><span class="av">="</span><span class="atv">string"</span>
+				<span class="at">guidext</span><span class="av">="</span><span class="atv">unsignedByte"</span>
+				<span class="at">state</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Type</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">int
+-<b>required</b>"</span>
+				<span class="at">dir</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="at">code</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>/<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Date</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- dateTime --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Date</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">No</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">No</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i3">&lt;!--  <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">BusinessPartner</span>
+				<span class="at">role</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">int
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- BusinessPartnerType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">BusinessPartner</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Template</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedByte
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!-- Название категории --&gt;</span>
+				<span class="i4 lt"><span class="comment">&lt;!-- TTemplateType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
+				<span class="at">lang</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- Название категории:string --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">Template</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">RCenter</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">int
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- RCenterType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- Название ЦФО:string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">RCenter</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Entity</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">int
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- EntityComplexType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">BusinessPartner</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">int
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- BusinessPartnerType --&gt;</span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i4 lt">&lt;/</span><span class="tn">BusinessPartner</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">Entity</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Segment</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedByte"</span>
+				<span class="at">status</span><span class="av">="</span><span class="atv">unsignedByte"</span>
+				<span class="at">code</span><span class="av">="</span><span class="atv">unsignedByte"</span>
+				<span class="at">type</span><span class="av">="</span><span class="atv">unsignedByte"</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- SegmentType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- SegmentType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Description</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Description</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">Segment</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Project</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">ID"</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- ProjectType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">Project</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Contract</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="at">code</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="at">type</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- ContractType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">Contract</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Employee</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">int
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- EmployeeComplexType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">Employee</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">AmountsAndTaxes</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!--  <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Amount</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">string"</span>
+				<span class="at">type</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="at">currency</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- decimal --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">Amount</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">AmountsAndTaxes</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Period</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Start</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- date --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Start</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">End</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- date --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">End</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">Period</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Accounts</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!--  <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Account</span>
+				<span class="at">role</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedByte
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i5">&lt;!-- Название счета <b>This element is required</b> --&gt;</span>
+				<span class="i5 lt"><span class="comment">&lt;!-- AccountType --&gt;</span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">Name</span>
+				<span class="at">lang</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- Название счета:string --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i4 lt">&lt;/</span><span class="tn">Account</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">Accounts</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Description</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Description</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Changes</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Date</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- dateTime --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Date</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">User</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedByte
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- UserComplexType --&gt;</span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i4 lt">&lt;/</span><span class="tn">User</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">Changes</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i3 lt">&lt;</span><span class="tn">Rows</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!--  <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
+				<span class="i4 lt">&lt;</span><span class="tn">Row</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedShort
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">Item</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedShort
+-<b>required</b>"</span>
+				<span class="at">code</span><span class="av">="</span><span class="atv">string"</span>
+				<span class="at">type</span><span class="av">="</span><span class="atv">
+[C,S,A,F,N]
+"</span>
+				<span class="lt">&gt;</span><br/><span class="i6 lt"><span class="comment">&lt;!-- ItemType --&gt;</span></span><br/>
+				<span class="i6 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i5 lt">&lt;/</span><span class="tn">Item</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">UoM</span>
+				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedByte
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span><br/><span class="i6 lt"><span class="comment">&lt;!-- UoMType --&gt;</span></span><br/>
+				<span class="i6 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- string --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i5 lt">&lt;/</span><span class="tn">UoM</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">Qty</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- decimal --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Qty</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">Price</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- decimal --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Price</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">BasePrice</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- decimal --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">BasePrice</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">Sum</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- decimal --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Sum</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">Tax</span>
+				<span class="at">code</span><span class="av">="</span><span class="atv">string
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- decimal --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">Tax</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i4 lt">&lt;/</span><span class="tn">Row</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">Rows</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i2 lt">&lt;/</span><span class="tn">Document</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i1 lt">&lt;/</span><span class="tn">Documents</span>
+				<span class="lt">&gt;</span></div>
+		</div>
+	</body>
+	<link href="css/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+</html>

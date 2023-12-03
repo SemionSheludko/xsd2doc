@@ -1,0 +1,113 @@
+/*try{*/
+   var objXMLDocument;
+   var objInputDocument = new ActiveXObject("Msxml2.FreeThreadedDOMDocument.6.0");
+   var objOutputDocument = new ActiveXObject("Msxml2.FreeThreadedDOMDocument.6.0");
+   var objOutputDocument2 = new ActiveXObject("Msxml2.FreeThreadedDOMDocument.6.0");
+   var xslDoc = new ActiveXObject("Msxml2.FreeThreadedDOMDocument.6.0");
+
+   var schemaPath = "schema/"
+   var schemaFile = "AB.TTemplates.xsd"
+   var compiled = "compiled_xsd/schema.TTemplates.xsl"
+   var requestFile = "xsd2sql_get_request.xml"
+   var outFile = "xsd2sql_get.xml"
+
+   xslDoc.async = false;
+   xslDoc.resolveExternals = true;
+   xslDoc.setProperty("ResolveExternals", true);
+   xslDoc.setProperty("AllowDocumentFunction", true);
+   xslDoc.load("xsd2sql_get.xsl");
+   if (xslDoc.parseError.errorCode != 0) 
+   {
+	var myErr = xslDoc.parseError;
+	WScript.Echo("You have xsl error " + myErr.reason + ",line " + myErr.line);
+   } 
+   else 
+   {
+	objInputDocument.async= false;
+    objInputDocument.resolveExternals = true;
+	objInputDocument.validateOnParse = true;
+	objInputDocument.setProperty("SelectionNamespaces","xmlns:xs='http://www.w3.org/2001/XMLSchema'");
+	var filePaths = [];
+	LoadXsd(schemaFile, schemaPath, objInputDocument, true, filePaths)
+	//objInputDocument.save("schemacomp.xsd");
+	if (objInputDocument.parseError.errorCode != 0) 
+	{
+		var myErr = objInputDocument.parseError;
+		WScript.Echo("You have input error " + myErr.reason + ",line " + myErr.line);
+	} 
+	else 
+	{
+		var xslt = new ActiveXObject("Msxml2.XSLTemplate.6.0");
+		xslt.stylesheet = xslDoc;
+		var xslProc = xslt.createProcessor();
+		objOutputDocument.setProperty("ProhibitDTD", false);
+		xslProc.input = objInputDocument;
+		xslProc.output = objOutputDocument;
+		xslProc.transform();
+		objOutputDocument.save(compiled);
+
+		var xslt2 = new ActiveXObject("Msxml2.XSLTemplate.6.0");
+		objInputDocument.load(requestFile);
+		if (objInputDocument.parseError.errorCode != 0) 
+		{
+			var myErr = objInputDocument.parseError;
+			WScript.Echo("You have parse error " + myErr.reason + ",line " + myErr.line);
+		} 
+		else
+		{
+			xslt2.stylesheet = objOutputDocument;
+			var xslProc = xslt2.createProcessor();
+			objOutputDocument2.setProperty("ProhibitDTD", false);
+			xslProc.input = objInputDocument;
+			xslProc.output = objOutputDocument2;
+			xslProc.transform();
+			objOutputDocument2.save(outFile);
+		}
+	}
+   }
+   
+   WScript.Echo ('OK');
+/*  } catch (e)
+  {
+	WScript.Echo (e.message);
+  }*/
+	function LoadXsd(xsdFile, path, doc, root, filePaths)
+		{
+			var fullPath = path + xsdFile;
+			if (indexOf(filePaths,fullPath)!=-1)
+				return;
+			filePaths.push(fullPath);
+			var current = doc;
+			if (root)
+				doc.load( fullPath );
+			else
+			{
+				var xsdIncluded = new ActiveXObject("Msxml2.FreeThreadedDOMDocument.6.0");
+				xsdIncluded.async = false;
+				xsdIncluded.load(fullPath);
+
+				xsdIncluded.setProperty("SelectionNamespaces","xmlns:xs='http://www.w3.org/2001/XMLSchema'");
+				var cts = xsdIncluded.selectNodes("xs:schema/xs:complexType|xs:schema/xs:simpleType|xs:schema/xs:group|xs:schema/xs:attributeGroup");
+				for (var i = 0; i < cts.length; i++) {
+					var node = cts[i];
+					var imported = doc.importNode(node, true);
+					doc.documentElement.appendChild(imported);
+				}
+				current = xsdIncluded;
+			}
+			var xsincludes = current.selectNodes("xs:schema/xs:include|xs:schema/xs:import");
+			for (var i = 0; i < xsincludes.length; i++) {
+				var node = xsincludes[i];
+				var schemaloc = node.getAttribute("schemaLocation");
+				if (schemaloc != null)
+					LoadXsd(schemaloc, path, doc, false, filePaths);
+			}
+		}
+function indexOf(arr, item) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == item) {
+            return i;
+        }
+    }
+    return -1;
+}

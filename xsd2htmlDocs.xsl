@@ -70,14 +70,14 @@ Not supported:
 	<!-- close previous tag, if it is not root element  -->
 	<xsl:if test="$indent!=1"><span class="lt">&gt;</span><br/></xsl:if>
 	<!-- print comment above element, if it is not simpleType. Simple types will comment inline  -->
-	<xsl:if test="not(substring-before(@type,':')=$xsdPrefix or $simpleType)">
+	<xsl:if test="not(substring-before(@type,':')=$xsdPrefix or $simpleType) and $complexType//xs:element">
 		<xsl:call-template name="printElementComment">
 			<xsl:with-param name="indent" select="$indent"/>
 			<xsl:with-param name="ref" select="$ref"/>
 			<xsl:with-param name="path" select="$path"/>
 		</xsl:call-template>
 	</xsl:if>
-	<xsl:if test="(parent::xs:choice or parent::xs:sequence/parent::xs:choice) and not(preceding-sibling::*)">
+	<xsl:if test="parent::xs:choice or (parent::xs:sequence/parent::xs:choice) and not(preceding-sibling::*)">
 		<span class="i{$indent} lt"><span class="comment"><b><xsl:text>&lt;-- One of the possible options --&gt;</xsl:text></b></span></span><br/>
 	</xsl:if>
 	<!--xsl:if test="$parentType">
@@ -171,7 +171,7 @@ Not supported:
 	<xsl:param name="path"/>
 	
 	<xsl:if test="xs:annotation or ($ref and $ref/xs:annotation) or 
-		@minOccurs[.!=0] or @maxOccurs[.!=1] or ($ref and ($ref/@minOccurs[.!=0] or $ref/@maxOccurs[.!=1]))">
+		@minOccurs or @maxOccurs or ($ref and ($ref/@minOccurs or $ref/@maxOccurs))">
 	<span class="comment block i{$indent}"><xsl:text>&lt;!-- </xsl:text>
 		<!--xsl:value-of select="$path"/-->
 		<xsl:if test="xs:annotation">
@@ -180,11 +180,11 @@ Not supported:
 		<xsl:if test="$ref and $ref/xs:annotation">
 			<xsl:apply-templates select="$ref/xs:annotation"/>
 		</xsl:if>
-		<xsl:if test="@minOccurs[.!=0] or @maxOccurs[.!=1]">
+		<xsl:if test="@minOccurs or @maxOccurs">
 			<xsl:apply-templates select="@minOccurs"/>
 			<xsl:apply-templates select="@maxOccurs"/>
 		</xsl:if>
-		<xsl:if test="$ref and ($ref/@minOccurs[.!=0] or $ref/@maxOccurs[.!=1])">
+		<xsl:if test="$ref and ($ref/@minOccurs or $ref/@maxOccurs)">
 			<xsl:apply-templates select="$ref/@minOccurs"/>
 			<xsl:apply-templates select="$ref/@maxOccurs"/>
 		</xsl:if>
@@ -210,10 +210,9 @@ Not supported:
 	<xsl:text> </xsl:text>required min <xsl:value-of select="."/> times
 </xsl:template>
 <xsl:template match="@minOccurs[.=1]">
-	<xsl:text> </xsl:text><b>This element is required</b>
+	<xsl:text> </xsl:text><b>Mandatory</b>
 </xsl:template>
-<xsl:template match="@minOccurs[.=0]">
-</xsl:template>
+<xsl:template match="@minOccurs[.=0]">Optional</xsl:template>
 <xsl:template match="@maxOccurs">
 	maximum occurs <xsl:value-of select="."/>
 </xsl:template>

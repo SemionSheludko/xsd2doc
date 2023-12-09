@@ -28,9 +28,19 @@ Not supported:
 	<xsl:param name="simpleType"/>
 	<xsl:param name="complexType"/>
 		<xsl:text> </xsl:text>
+		<xsl:variable name="st">
+			<xsl:apply-templates select="$simpleType"/>
+		</xsl:variable>
 		<span class="at"><xsl:value-of select="@name"/><xsl:value-of select="@ref"/></span><span class="av">="</span><span class="atv">
 		<xsl:value-of select="substring-after(@type,$xsdPrefixC)"/>
-		<xsl:apply-templates select="$simpleType"/>
+		<xsl:choose>
+			<xsl:when test="string-length($st) &lt; 68">
+				<xsl:value-of select="$st"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="substring($st,1,67)"/><xsl:text>...</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 		<xsl:apply-templates select="@ref"/>
 		<xsl:apply-templates select="@use"/>"</span>
 </xsl:template>
@@ -67,9 +77,12 @@ Not supported:
 			<xsl:with-param name="path" select="$path"/>
 		</xsl:call-template>
 	</xsl:if>
-	<xsl:if test="$parentType">
-	<span class="i{$indent} lt"><span class="comment"><xsl:text>&lt;!-- </xsl:text><xsl:value-of select="$parentType/@name"/><xsl:text> --&gt;</xsl:text></span></span><br/>
+	<xsl:if test="(parent::xs:choice or parent::xs:sequence/parent::xs:choice) and not(preceding-sibling::*)">
+		<span class="i{$indent} lt"><span class="comment"><b><xsl:text>&lt;-- One of the possible options --&gt;</xsl:text></b></span></span><br/>
 	</xsl:if>
+	<!--xsl:if test="$parentType">
+	<span class="i{$indent} lt"><span class="comment"><xsl:text>&lt;/// </xsl:text><xsl:value-of select="$parentType/@name"/><xsl:text> //&gt;</xsl:text></span></span><br/>
+	</xsl:if-->
 	<!-- open element tag  -->
 	<span class="i{$indent} lt">&lt;</span><span class="tn"><xsl:value-of select="concat($ins,@name)"/></span>
 	<!-- print namespaces for root element  -->
@@ -89,11 +102,27 @@ Not supported:
 			</xsl:apply-templates>
 			<xsl:choose>
 				<xsl:when test="$complexType/xs:simpleContent">
+					<xsl:variable name="doc">
+						<xsl:apply-templates select="xs:annotation"/><xsl:if test="xs:annotation">:</xsl:if>
+					</xsl:variable>
 					<span class="lt">&gt;</span>
-					<span class="comment"><xsl:text>&lt;!-- </xsl:text>
-					<xsl:apply-templates select="xs:annotation"/><xsl:if test="xs:annotation">:</xsl:if>
+					<xsl:if test="string-length($doc) &gt; 50">
+						<br/>
+					</xsl:if>
+					<span>
+					<xsl:if test="string-length($doc) &gt; 50">
+						<xsl:attribute name="class"><xsl:text>comment i</xsl:text><xsl:value-of select="$indent + 1"/><xsl:text> block</xsl:text></xsl:attribute>
+					</xsl:if>
+					<xsl:if test="string-length($doc) &lt;= 50">
+						<xsl:attribute name="class">comment</xsl:attribute>
+					</xsl:if>
+					<xsl:text>&lt;!-- </xsl:text>
+					<xsl:value-of select="$doc"/>
 					<xsl:value-of select="substring-after($complexType/xs:simpleContent/xs:extension/@base,$xsdPrefixC)"/>
 					<xsl:text> --&gt;</xsl:text></span>
+					<xsl:if test="string-length($doc) &gt; 50">
+						<span class="i{$indent}"/>
+					</xsl:if>
 					<span class="lt">&lt;/</span><span class="tn"><xsl:value-of select="concat($ins,@name)"/></span>
 				</xsl:when>
 				<xsl:when test="$complexType/*/xs:element or $complexType/xs:complexContent//xs:element or $complexType/@mixed='true'
@@ -114,20 +143,21 @@ Not supported:
 			<xsl:variable name="doc">
 				<xsl:apply-templates select="xs:annotation"/><xsl:if test="xs:annotation">:</xsl:if>
 			</xsl:variable>
-			<xsl:choose>
-				<xsl:when test="string-length($doc) &gt; 100">
-					<br/>
-					<span class="comment i{$indent + 1} block">
-						<xsl:text>&lt;!-- </xsl:text><xsl:value-of select="$doc"/><xsl:value-of select="substring-after(@type,$xsdPrefixC)"/><xsl:if test="$simpleType"><xsl:apply-templates select="$simpleType"/></xsl:if><xsl:text> --&gt;</xsl:text>
-					</span>
-					<span class="i{$indent}"/>
-				</xsl:when>
-				<xsl:otherwise>
-					<span class="comment">
-						<xsl:text>&lt;!-- </xsl:text><xsl:value-of select="$doc"/><xsl:value-of select="substring-after(@type,$xsdPrefixC)"/><xsl:if test="$simpleType"><xsl:apply-templates select="$simpleType"/></xsl:if><xsl:text> --&gt;</xsl:text>
-					</span>
-				</xsl:otherwise>
-			</xsl:choose>
+			<xsl:if test="string-length($doc) &gt; 50">
+				<br/>
+			</xsl:if>
+			<span>
+				<xsl:if test="string-length($doc) &gt; 50">
+					<xsl:attribute name="class"><xsl:text>comment i</xsl:text><xsl:value-of select="$indent + 1"/><xsl:text> block</xsl:text></xsl:attribute>
+				</xsl:if>
+				<xsl:if test="string-length($doc) &lt;= 50">
+					<xsl:attribute name="class">comment</xsl:attribute>
+				</xsl:if>
+				<xsl:text>&lt;!-- </xsl:text><xsl:value-of select="$doc"/><xsl:value-of select="substring-after(@type,$xsdPrefixC)"/><xsl:if test="$simpleType"><xsl:apply-templates select="$simpleType"/></xsl:if><xsl:text> --&gt;</xsl:text>
+			</span>
+			<xsl:if test="string-length($doc) &gt; 50">
+				<span class="i{$indent}"/>
+			</xsl:if>
 			<span class="lt">&lt;</span>/<span class="tn"><xsl:value-of select="concat($ins,@name)"/></span>
 		</xsl:when>
 		<!-- otherwise - just close tag  -->

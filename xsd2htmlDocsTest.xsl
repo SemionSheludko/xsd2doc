@@ -48,6 +48,11 @@
 			.i4 {margin-left: 50px;}
 			.i5 {margin-left: 65px;}
 			.i6 {margin-left: 80px;}
+			.i7 {margin-left: 95px;}
+			.i8 {margin-left: 110px;}
+			.i9 {margin-left: 125px;}
+			.i10 {margin-left: 140px;}
+			.i11 {margin-left: 155px;}
 		</style>
 	</head>
 	<body>

@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>xsd2htm ab</title>
+		<title>xsd2htm dpi</title>
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
 		<link href="themes/bootstrap/forms.css" rel="stylesheet"/>
 		<style>
@@ -33,291 +33,1659 @@
 			.i4 {margin-left: 50px;}
 			.i5 {margin-left: 65px;}
 			.i6 {margin-left: 80px;}
+			.i7 {margin-left: 95px;}
+			.i8 {margin-left: 110px;}
+			.i9 {margin-left: 125px;}
+			.i10 {margin-left: 140px;}
+			.i11 {margin-left: 155px;}
 		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div class="code">
-				<span class="i1 lt">&lt;</span><span class="tn">Documents</span>
-				<span class="at">xmlns="http://ab.report/schema/v1"</span>
-				<span class="lt">&gt;</span><br/><span class="comment block i2">&lt;!--  <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
-				<span class="i2 lt">&lt;</span><span class="tn">Document</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedShort
--<b>required</b>"</span>
-				<span class="at">guid</span><span class="av">="</span><span class="atv">string"</span>
-				<span class="at">guidext</span><span class="av">="</span><span class="atv">unsignedByte"</span>
-				<span class="at">state</span><span class="av">="</span><span class="atv">string
--<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Type</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">int
--<b>required</b>"</span>
-				<span class="at">dir</span><span class="av">="</span><span class="atv">string
--<b>required</b>"</span>
-				<span class="at">code</span><span class="av">="</span><span class="atv">string
--<b>required</b>"</span>/<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Date</span>
+				<span class="i1 lt">&lt;</span><span class="tn">DPI_OECD</span>
+				<span class="at">xmlns="urn:oecd:ties:dpi:v1"</span>
+				<span class="at">version</span><span class="av">="</span><span class="atv">string
+,max length: 10
+,min length: 1"</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i2">&lt;!-- The information in the message header identifies the tax administration that is sending the DPI message. It specifies when the message was created, what reporting period the report is for, and the nature of the report (original, supplemental, etc.). --&gt;</span>
+				<span class="i2 lt">&lt;</span><span class="tn">MessageSpec</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt">&lt;</span><span class="tn">SendingEntityIN</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- dateTime --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Date</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">No</span>
+				<br/>
+				<span class="comment i4 block">&lt;!-- Although not used for exchanges between Competent Authorities under the DPI MCAA and [EU DIR2021/514], for domestic reporting, this data element can be used in case the schema is mandated for domestic reporting by Reporting Platform Operators to their tax administration. In such instances, it identifies the Reporting Platform Operator sending the message through a domestically-defined identification number.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i3"/>
+				<span class="lt">&lt;</span>/<span class="tn">SendingEntityIN</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt">&lt;</span><span class="tn">TransmittingCountry</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">No</span>
-				<span class="lt">&gt;</span><br/><span class="comment block i3">&lt;!--  <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
-				<span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">BusinessPartner</span>
-				<span class="at">role</span><span class="av">="</span><span class="atv">string
--<b>required</b>"</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">int
--<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- BusinessPartnerType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
+				<br/>
+				<span class="comment i4 block">&lt;!-- This data element identifies the jurisdiction of the Competent Authority transmitting the DPI message.:
+[AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE,BZ,BJ,BM,BT,BO,BQ,BA,BW,BV,BR,IO,BN,BG,BF,BI,KH,CM,CA,CV,KY,CF,TD,CL,CN,CX,CC,CO,KM,CG,CD,CK,CR,CI,HR,CU,CW,CY,CZ,DK,DJ,DM,DO,EC,EG,SV,GQ,ER,EE,ET,FK,FO,FJ,FI,FR,GF,PF,TF,GA,GM,GE,DE,GH,GI,GR,GL,GD,GP,GU,GT,GG,GN,GW,GY,HT,HM,VA,HN,HK,HU,IS,IN,ID,IR,IQ,IE,IM,IL,IT,JM,JP,JE,JO,KZ,KE,KI,KP,KR,KW,KG,LA,LV,LB,LS,LR,LY,LI,LT,LU,MO,MK,MG,MW,MY,MV,ML,MT,MH,MQ,MR,MU,YT,MX,FM,MD,MC,MN,ME,MS,MA,MZ,MM,NA,NR,NP,NL,NC,NZ,NI,NE,NG,NU,NF,MP,NO,OM,PK,PW,PS,PA,PG,PY,PE,PH,PN,PL,PT,PR,QA,RE,RO,RU,RW,BL,SH,KN,LC,MF,PM,VC,WS,SM,ST,SA,SN,RS,SC,SL,SG,SX,SK,SI,SB,SO,ZA,GS,SS,ES,LK,SD,SR,SJ,SZ,SE,CH,SY,TW,TJ,TZ,TH,TL,TG,TK,TO,TT,TN,TR,TM,TC,TV,UG,UA,AE,GB,US,UM,UY,UZ,VU,VE,VN,VG,VI,WF,EH,YE,ZM,ZW,XK,X5,XX]
+ --&gt;</span>
+				<span class="i3"/>
+				<span class="lt">&lt;</span>/<span class="tn">TransmittingCountry</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt">&lt;</span><span class="tn">ReceivingCountry</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<br/>
+				<span class="comment i4 block">&lt;!-- This data element identifies the jurisdiction of the Competent Authority receiving the DPI message.:
+[AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE,BZ,BJ,BM,BT,BO,BQ,BA,BW,BV,BR,IO,BN,BG,BF,BI,KH,CM,CA,CV,KY,CF,TD,CL,CN,CX,CC,CO,KM,CG,CD,CK,CR,CI,HR,CU,CW,CY,CZ,DK,DJ,DM,DO,EC,EG,SV,GQ,ER,EE,ET,FK,FO,FJ,FI,FR,GF,PF,TF,GA,GM,GE,DE,GH,GI,GR,GL,GD,GP,GU,GT,GG,GN,GW,GY,HT,HM,VA,HN,HK,HU,IS,IN,ID,IR,IQ,IE,IM,IL,IT,JM,JP,JE,JO,KZ,KE,KI,KP,KR,KW,KG,LA,LV,LB,LS,LR,LY,LI,LT,LU,MO,MK,MG,MW,MY,MV,ML,MT,MH,MQ,MR,MU,YT,MX,FM,MD,MC,MN,ME,MS,MA,MZ,MM,NA,NR,NP,NL,NC,NZ,NI,NE,NG,NU,NF,MP,NO,OM,PK,PW,PS,PA,PG,PY,PE,PH,PN,PL,PT,PR,QA,RE,RO,RU,RW,BL,SH,KN,LC,MF,PM,VC,WS,SM,ST,SA,SN,RS,SC,SL,SG,SX,SK,SI,SB,SO,ZA,GS,SS,ES,LK,SD,SR,SJ,SZ,SE,CH,SY,TW,TJ,TZ,TH,TL,TG,TK,TO,TT,TN,TR,TM,TC,TV,UG,UA,AE,GB,US,UM,UY,UZ,VU,VE,VN,VG,VI,WF,EH,YE,ZM,ZW,XK,X5,XX]
+ --&gt;</span>
+				<span class="i3"/>
+				<span class="lt">&lt;</span>/<span class="tn">ReceivingCountry</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt">&lt;</span><span class="tn">MessageType</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i4 block">&lt;!-- This data element specifies the type of message being sent. The only allowable entry for messages exchanged under the OECD Model Rules and [EU Specific] [EU DIR2021/514] in this field is “DPI”.:
+[DPI,DAC7]
+ --&gt;</span>
+				<span class="i3"/>
+				<span class="lt">&lt;</span>/<span class="tn">MessageType</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt">&lt;</span><span class="tn">Warning</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i4 block">&lt;!-- Free text expressing the restrictions for use of the information this message contains and the legal framework under which it is given.:string
+,max length: 4000
+,min length: 1 --&gt;</span>
+				<span class="i3"/>
+				<span class="lt">&lt;</span>/<span class="tn">Warning</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt">&lt;</span><span class="tn">Contact</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i4 block">&lt;!-- All necessary contact information about persons responsible for and involved in the processing of the data transmitted in this message, both legally and technically. Free text as this is not intended for automatic processing.
+					In international exchanges, this data element contains the contact details of the sending competent authority.:string
+,max length: 4000
+,min length: 1 --&gt;</span>
+				<span class="i3"/>
+				<span class="lt">&lt;</span>/<span class="tn">Contact</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt">&lt;</span><span class="tn">MessageRefId</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i4 block">&lt;!-- Sender's unique identifier for this message.
+					The Message RefID must start with the country code of the sending jurisdiction, then the year of the reportable period, then the receiving country code before a unique identifier.:string
+,max length: 170
+,min length: 1 --&gt;</span>
+				<span class="i3"/>
+				<span class="lt">&lt;</span>/<span class="tn">MessageRefId</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt">&lt;</span><span class="tn">MessageTypeIndic</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i4 block">&lt;!-- This data element specifies the type of information that is sent, i.e. whether it is new information or whether the message seeks to correct or delete previously sent information.:
+[DPI401,DPI402,DPI403]
+ --&gt;</span>
+				<span class="i3"/>
+				<span class="lt">&lt;</span>/<span class="tn">MessageTypeIndic</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt">&lt;</span><span class="tn">ReportingPeriod</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i4 block">&lt;!-- The reporting year for which information is transmitted in documents of the current message. This is in yyyy-MM-DD format, on the basis of the calendar year in which the relevant Reportable Period under the OECD Model Rules or [EU Specific] [EU DIR2021/514] ended.:date --&gt;</span>
+				<span class="i3"/>
+				<span class="lt">&lt;</span>/<span class="tn">ReportingPeriod</span>
+				<span class="lt">&gt;</span><br/><span class="i3 lt">&lt;</span><span class="tn">Timestamp</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i4 block">&lt;!-- This data element identifies the date and time when the message was compiled. It is anticipated that this element will be automatically populated by the host system. The format for use is yyyy-MM-DD’T’hh:mm:ss.nnn. Fractions of seconds may be used (in such a case the milli-seconds will be provided on 3 digits, see “.nnn” in the format above). :dateTime --&gt;</span>
+				<span class="i3"/>
+				<span class="lt">&lt;</span>/<span class="tn">Timestamp</span>
 				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">BusinessPartner</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Template</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedByte
--<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!-- Название категории --&gt;</span>
-				<span class="i4 lt"><span class="comment">&lt;!-- TTemplateType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
-				<span class="at">lang</span><span class="av">="</span><span class="atv">string
+				<span class="i2 lt">&lt;/</span><span class="tn">MessageSpec</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i2">&lt;!-- The DPI Body element contains the information on the Reporting Platform Operator, as well as on the Relevant Services performed by Reportable Sellers that give rise to the exchange. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i2 lt">&lt;</span><span class="tn">DPIBody</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i3">&lt;!-- The Platform Operator element identifies the Reporting Platform Operator and follows the Organisation Party type (see OrganisationParty_Type). --&gt;</span>
+				<span class="i3 lt">&lt;</span><span class="tn">PlatformOperator</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!-- DocSpec identifies the particular report within the DPI message being transmitted. It permits the identification of reports requiring correction. --&gt;</span>
+				<span class="i4 lt">&lt;</span><span class="tn">DocSpec</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt">&lt;</span><span class="tn">DocTypeIndic</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- 
+[OECD0,OECD1,OECD2,OECD3,OECD10,OECD11,OECD12,OECD13]
+ --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">DocTypeIndic</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt">&lt;</span><span class="tn">DocRefId</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- Sender's unique identifier of this document.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">DocRefId</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt">&lt;</span><span class="tn">CorrMessageRefId</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- This element must not be used.:string
+,max length: 170
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">CorrMessageRefId</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt">&lt;</span><span class="tn">CorrDocRefId</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i6 block">&lt;!-- Reference id of the document referred to if this is correction.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i5"/>
+				<span class="lt">&lt;</span>/<span class="tn">CorrDocRefId</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i4 lt">&lt;/</span><span class="tn">DocSpec</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt">&lt;</span><span class="tn">ResCountryCode</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i5 block">&lt;!-- This repeatable data element describes the residence country code(s) of the entity. 
+In case of an Entity Seller this should always be present and should correspond to the jurisdiction of residence identified on the basis of the due diligence requirements of the OECD Model Rules or [EU Specific] [EU DIR2021/514]. Specifically, under the OECD Model Rules, the residence country code of an Entity Seller should correspond to the jurisdiction in which its registered office is located.
+In case of a Reporting Platform Operator, the residence country code should correspond to the jurisdiction where the Reporting Platform Operator is resident for tax purposes or, where it does not have a residence for tax purposes, either the jurisdiction it is incorporated under or the jurisdiction that it has its place of management (including effective management) in, [EU Specific] or the Member State where it has a permanent establishment in.
+[EU Specific]: Reporting Platform Operator: This element is optional.:CountryCode_Type --&gt;</span>
+				<span class="i4"/>
+				<span class="lt">&lt;</span>/<span class="tn">ResCountryCode</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!-- This repeatable data element provides the tax identification number (TIN) used by the tax administration of the jurisdiction of residence of the entity. In case the entity does not have a TIN, or the TIN is not known  to the sending Competent Authority, the value “NOTIN” should be entered [OECD Specific] and the Unknown attribute (see below) must be set to “true”. Furthermore, in case more than one TIN are provided, any provided element cannot be flagged as “unknown”.
+					[EU Specific]: This element must be present for both Reporting Platform Operator and Entity Seller. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i4 lt">&lt;</span><span class="tn">TIN</span>
+				<span class="at">issuedBy</span><span class="av">="</span><span class="atv">
+[AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE..."</span>
+				<span class="at">unknown</span><span class="av">="</span><span class="atv">boolean"</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i5 block">&lt;!-- This repeatable data element provides the tax identification number (TIN) used by the tax administration of the jurisdiction of residence of the entity. In case the entity does not have a TIN, or the TIN is not known  to the sending Competent Authority, the value “NOTIN” should be entered [OECD Specific] and the Unknown attribute (see below) must be set to “true”. Furthermore, in case more than one TIN are provided, any provided element cannot be flagged as “unknown”.
+					[EU Specific]: This element must be present for both Reporting Platform Operator and Entity Seller.: --&gt;</span>
+				<span class="i4"/>
+				<span class="lt">&lt;/</span><span class="tn">TIN</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!-- This data element can be provided (and repeated) if there are other INs available, such as a company registration number or an Entity Identification Number (EIN).
+					[EU Specific]:
+					•	Reporting Platform Operator: Where relevant, the individual identification number (IIN) shall be provided
+					•	Entity Seller: The business registration number (BRN) must be provided <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i4 lt">&lt;</span><span class="tn">IN</span>
+				<span class="at">issuedBy</span><span class="av">="</span><span class="atv">
+[AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE..."</span>
+				<span class="at">INType</span><span class="av">="</span><span class="atv">
+[LEI,EIN,IIN,BRN,Other]
+
 -<b>required</b>"</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- Название категории:string --&gt;</span>
+				<br/>
+				<span class="comment i5 block">&lt;!-- This data element can be provided (and repeated) if there are other INs available, such as a company registration number or an Entity Identification Number (EIN).
+					[EU Specific]:
+					•	Reporting Platform Operator: Where relevant, the individual identification number (IIN) shall be provided
+					•	Entity Seller: The business registration number (BRN) must be provided: --&gt;</span>
+				<span class="i4"/>
+				<span class="lt">&lt;/</span><span class="tn">IN</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt">&lt;</span><span class="tn">VAT</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i5 block">&lt;!-- This data element can be provided when a VAT Identification number is available.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i4"/>
+				<span class="lt">&lt;</span>/<span class="tn">VAT</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!-- This element should contain the legal name of the entity, including the domestic designation for the legal form, as indicated in its articles of incorporation or any similar document. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i5 block">&lt;!-- This element should contain the legal name of the entity, including the domestic designation for the legal form, as indicated in its articles of incorporation or any similar document.: --&gt;</span>
+				<span class="i4"/>
 				<span class="lt">&lt;/</span><span class="tn">Name</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">Template</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">RCenter</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">int
--<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- RCenterType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt">&lt;</span><span class="tn">PlatformBusinessName</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- Название ЦФО:string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Name</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">RCenter</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Entity</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">int
--<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- EntityComplexType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">BusinessPartner</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">int
--<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- BusinessPartnerType --&gt;</span></span><br/>
-				<span class="i5 lt">&lt;</span><span class="tn">Name</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Name</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i4 lt">&lt;/</span><span class="tn">BusinessPartner</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">Entity</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Segment</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedByte"</span>
-				<span class="at">status</span><span class="av">="</span><span class="atv">unsignedByte"</span>
-				<span class="at">code</span><span class="av">="</span><span class="atv">unsignedByte"</span>
-				<span class="at">type</span><span class="av">="</span><span class="atv">unsignedByte"</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- SegmentType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Name</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- SegmentType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Description</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Description</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">Segment</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Project</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">ID"</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- ProjectType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Name</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">Project</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Contract</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">string
--<b>required</b>"</span>
-				<span class="at">code</span><span class="av">="</span><span class="atv">string
--<b>required</b>"</span>
-				<span class="at">type</span><span class="av">="</span><span class="atv">string
--<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- ContractType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Name</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">Contract</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Employee</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">int
--<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- EmployeeComplexType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Name</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Name</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">Employee</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">AmountsAndTaxes</span>
-				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!--  <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
-				<span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Amount</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">string"</span>
-				<span class="at">type</span><span class="av">="</span><span class="atv">string
--<b>required</b>"</span>
-				<span class="at">currency</span><span class="av">="</span><span class="atv">string
--<b>required</b>"</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- decimal --&gt;</span>
-				<span class="lt">&lt;/</span><span class="tn">Amount</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">AmountsAndTaxes</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Period</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Start</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- date --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Start</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">End</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- date --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">End</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">Period</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Accounts</span>
-				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!--  <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
-				<span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Account</span>
-				<span class="at">role</span><span class="av">="</span><span class="atv">string
--<b>required</b>"</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedByte
--<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="comment block i5">&lt;!-- Название счета <b>This element is required</b> --&gt;</span>
-				<span class="i5 lt"><span class="comment">&lt;!-- AccountType --&gt;</span></span><br/>
-				<span class="i5 lt">&lt;</span><span class="tn">Name</span>
-				<span class="at">lang</span><span class="av">="</span><span class="atv">string
--<b>required</b>"</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- Название счета:string --&gt;</span>
-				<span class="lt">&lt;/</span><span class="tn">Name</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i4 lt">&lt;/</span><span class="tn">Account</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">Accounts</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Description</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Description</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Changes</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Date</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- dateTime --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Date</span>
-				<span class="lt">&gt;</span><br/><span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">User</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedByte
--<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- UserComplexType --&gt;</span></span><br/>
-				<span class="i5 lt">&lt;</span><span class="tn">Name</span>
-				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Name</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i4 lt">&lt;/</span><span class="tn">User</span>
-				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">Changes</span>
-				<span class="lt">&gt;</span><br/><span class="i3 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i3 lt">&lt;</span><span class="tn">Rows</span>
-				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!--  <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
-				<span class="i4 lt"><span class="comment">&lt;!-- DocumentType --&gt;</span></span><br/>
-				<span class="i4 lt">&lt;</span><span class="tn">Row</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedShort
--<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
-				<span class="i5 lt">&lt;</span><span class="tn">Item</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedShort
--<b>required</b>"</span>
-				<span class="at">code</span><span class="av">="</span><span class="atv">string"</span>
-				<span class="at">type</span><span class="av">="</span><span class="atv">
-[C,S,A,F,N]
+				<br/>
+				<span class="comment i5 block">&lt;!-- The repeatable Platform Business Name element identifies the business name(s) of theother Reporting Platform(s) in respect of which the Reporting Platform Operator is reporting. 
+This element must not be used for the Entity Sellers.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i4"/>
+				<span class="lt">&lt;</span>/<span class="tn">PlatformBusinessName</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!-- This data element should contain the address of the entity, including the country code of the address as well as the type of the address, indicating the legal character of that address. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i4 lt">&lt;</span><span class="tn">Address</span>
+				<span class="at">legalAddressType</span><span class="av">="</span><span class="atv">
+[OECD301,OECD302,OECD303,OECD304,OECD305]
 "</span>
-				<span class="lt">&gt;</span><br/><span class="i6 lt"><span class="comment">&lt;!-- ItemType --&gt;</span></span><br/>
-				<span class="i6 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt">&lt;</span><span class="tn">CountryCode</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<br/>
+				<span class="comment i6 block">&lt;!-- This data element provides the country code associated with the entity’s (or person’s) address.:CountryCode_Type
+,max length: 2
+,min length: 1 --&gt;</span>
+				<span class="i5"/>
+				<span class="lt">&lt;</span>/<span class="tn">CountryCode</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i6 block">&lt;!-- This data element allows input of address information in free text. It should only be used in exceptional circumstances when it is impossible to provide the address in the fixed format.:string
+,max length: 4000
+,min length: 1 --&gt;</span>
+				<span class="i5"/>
+				<span class="lt">&lt;</span>/<span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">AddressFix</span>
+				<span class="lt">&gt;</span><br/><span class="i6 lt">&lt;</span><span class="tn">Street</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The street.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Street</span>
+				<span class="lt">&gt;</span><br/><span class="i6 lt">&lt;</span><span class="tn">BuildingIdentifier</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i7 block">&lt;!-- The identifier of the building on the street, typically a number.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i6"/>
+				<span class="lt">&lt;</span>/<span class="tn">BuildingIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i6 lt">&lt;</span><span class="tn">SuiteIdentifier</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i7 block">&lt;!-- The identifier of an office or similar part of a building.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i6"/>
+				<span class="lt">&lt;</span>/<span class="tn">SuiteIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i6 lt">&lt;</span><span class="tn">FloorIdentifier</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The identifier of a floor within a building.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">FloorIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i6 lt">&lt;</span><span class="tn">DistrictName</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The name of the district of the address.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">DistrictName</span>
+				<span class="lt">&gt;</span><br/><span class="i6 lt">&lt;</span><span class="tn">POB</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The post office box.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">POB</span>
+				<span class="lt">&gt;</span><br/><span class="i6 lt">&lt;</span><span class="tn">PostCode</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i7 block">&lt;!-- The post code of the address, which must be provided if available.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i6"/>
+				<span class="lt">&lt;</span>/<span class="tn">PostCode</span>
+				<span class="lt">&gt;</span><br/><span class="i6 lt">&lt;</span><span class="tn">City</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The city of the address.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">City</span>
+				<span class="lt">&gt;</span><br/><span class="i6 lt">&lt;</span><span class="tn">CountrySubentity</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i7 block">&lt;!-- A geographic area of the country larger than district or city, for example a county, a department, a Land, a canton, etc.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i6"/>
+				<span class="lt">&lt;</span>/<span class="tn">CountrySubentity</span>
 				<span class="lt">&gt;</span><br/>
-				<span class="i5 lt">&lt;/</span><span class="tn">Item</span>
-				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
-				<span class="i5 lt">&lt;</span><span class="tn">UoM</span>
-				<span class="at">id</span><span class="av">="</span><span class="atv">unsignedByte
+				<span class="i5 lt">&lt;/</span><span class="tn">AddressFix</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt">&lt;</span><span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i6 block">&lt;!-- This data element allows input of address information in free text. It should only be used in exceptional circumstances when it is impossible to provide the address in the fixed format.:string
+,max length: 4000
+,min length: 1 --&gt;</span>
+				<span class="i5"/>
+				<span class="lt">&lt;</span>/<span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i4 lt">&lt;/</span><span class="tn">Address</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt">&lt;</span><span class="tn">Nexus</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i5 block">&lt;!-- [EU Specific] This data element provides the reason for which the information will be reported to the competent authority of the EU Member State.
+					This data element must not be used for Entity Seller.:
+[RPONEX1,RPONEX2,RPONEX3,RPONEX4,RPONEX5]
+ --&gt;</span>
+				<span class="i4"/>
+				<span class="lt">&lt;</span>/<span class="tn">Nexus</span>
+				<span class="lt">&gt;</span><br/><span class="i4 lt">&lt;</span><span class="tn">AssumedReporting</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i5 block">&lt;!-- The Assumed Reporting element identifies whether the Reporting Platform Operator is not reporting information on Reportable Sellers, because another Reporting Platform Operator has assumed the reporting.
+					When “AssumedReporting” is set to “true”, it means that another Reporting Platform Operator reported for the Reporting Platform Operator. Otherwise, this element must be set to “false”.
+					This element is mandatory for Reporting Platform Operator and must not be provided for an Entity Seller.
+					By way of an example, Platform Z is operated by two Platform Operators: Platform Operator 1 (resident in jurisdiction 1) and Platform Operator 2 (resident in jurisdiction 2). In satisfying the reporting requirements, Platform Operator 1 has obtained assurances from Platform Operator 2 that it will fulfil the reporting obligations with respect to all of the Reportable Sellers of Platform Operator 1 in jurisdiction 2. 
+					Platform Operator 1 will therefore provide its identification information and set the AssumedReporting element to “true” to notify its jurisdiction residence (jurisdiction 1) that it has relied on another Platform Operator to fulfil the reporting requirements. Platform Operator 1 will also use the AssumingPlatformOperator element (discussed further below) to report to its jurisdiction (jurisdiction 1) identification information on Platform Operator 2, assuming the reporting obligation in the name of Platform Operator 1. Platform Operator 1 will not provide ReportableSeller element.
+					At the same time, Platform Operator 2 will use the AssumedPlatformOperator element (discussed further below) to report to its jurisdiction of residence (jurisdiction 2) identification information on Platform Operator 1, for which it has assumed reporting obligations, and complete the Platform Operator element for itself.
+					[EU Specific] This element is optional for the purposes of [EU DIR2021/514].
+:boolean --&gt;</span>
+				<span class="i4"/>
+				<span class="lt">&lt;</span>/<span class="tn">AssumedReporting</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">PlatformOperator</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i3">&lt;!-- This other Platform Operators element identifies either:
+					•	The Platform Operator assuming the reporting in the name of the Reporting Platform Operator, as identified in the Platform Operator 		element;
+					•	Each Platform Operator for which the Reporting Platform Operator, as identified in the Platform Operator element, assumes the reporting.
+					[OECD Specific] This element must be provided, if available.
+					[EU Specific] This element is optional for the purposes of [EU DIR2021/514].
+ --&gt;</span>
+				<span class="i3 lt">&lt;</span><span class="tn">OtherPlatformOperators</span>/<span class="lt">&gt;</span><br/><span class="comment block i3">&lt;!-- This element contains the identification information on each Reportable Seller, as well as information on the Relevant Services provided by such Reportable Seller and the Consideration derived therefrom.
+					In case of Nil Reporting, i.e. when MessageTypeIndic is set to “DPI403”, no Reportable Seller must be provided. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i3 lt">&lt;</span><span class="tn">ReportableSeller</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!-- DocSpec identifies the particular report within the DPI message being transmitted. It permits the identification of reports requiring correction. --&gt;</span>
+				<span class="i4 lt">&lt;</span><span class="tn">DocSpec</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt">&lt;</span><span class="tn">DocTypeIndic</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- 
+[OECD0,OECD1,OECD2,OECD3,OECD10,OECD11,OECD12,OECD13]
+ --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">DocTypeIndic</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt">&lt;</span><span class="tn">DocRefId</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- Sender's unique identifier of this document.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">DocRefId</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt">&lt;</span><span class="tn">CorrMessageRefId</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- This element must not be used.:string
+,max length: 170
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">CorrMessageRefId</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt">&lt;</span><span class="tn">CorrDocRefId</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i6 block">&lt;!-- Reference id of the document referred to if this is correction.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i5"/>
+				<span class="lt">&lt;</span>/<span class="tn">CorrDocRefId</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i4 lt">&lt;/</span><span class="tn">DocSpec</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!-- The Identity element is further comprised of the EntitySeller and IndividualSeller elements. --&gt;</span>
+				<span class="i4 lt">&lt;</span><span class="tn">Identity</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i5">&lt;!-- The Entity Seller element is further comprised of the Standard and GVS elements. --&gt;</span>
+				<span class="i5 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i5 lt">&lt;</span><span class="tn">EntitySeller</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Standard element reflects the standard due diligence procedures and is further comprised of the EntSellerID (that follows the OrganisationParty Type) and FinancialIdentifier elements. Platform Operators by default would use the standard due diligence procedures, but can also rely on the GVS procedure where it has been made available by the Reportable Jurisdiction .
+											The Standard element should be completed in case the Reporting Platform Operator has relied on the standard due diligence procedures of the OECD Model Rules or [EU Specific] [EU DIR2021/514] to identify and document the Entity Seller. --&gt;</span>
+				<span class="i6 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i6 lt">&lt;</span><span class="tn">Standard</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- The EntSellerID element identifies the Entity Seller and follows the OrganisationParty_Type. --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">EntSellerID</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">ResCountryCode</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- This repeatable data element describes the residence country code(s) of the entity. 
+In case of an Entity Seller this should always be present and should correspond to the jurisdiction of residence identified on the basis of the due diligence requirements of the OECD Model Rules or [EU Specific] [EU DIR2021/514]. Specifically, under the OECD Model Rules, the residence country code of an Entity Seller should correspond to the jurisdiction in which its registered office is located.
+In case of a Reporting Platform Operator, the residence country code should correspond to the jurisdiction where the Reporting Platform Operator is resident for tax purposes or, where it does not have a residence for tax purposes, either the jurisdiction it is incorporated under or the jurisdiction that it has its place of management (including effective management) in, [EU Specific] or the Member State where it has a permanent establishment in.
+[EU Specific]: Reporting Platform Operator: This element is optional.:CountryCode_Type --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">ResCountryCode</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- This repeatable data element provides the tax identification number (TIN) used by the tax administration of the jurisdiction of residence of the entity. In case the entity does not have a TIN, or the TIN is not known  to the sending Competent Authority, the value “NOTIN” should be entered [OECD Specific] and the Unknown attribute (see below) must be set to “true”. Furthermore, in case more than one TIN are provided, any provided element cannot be flagged as “unknown”.
+					[EU Specific]: This element must be present for both Reporting Platform Operator and Entity Seller. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">TIN</span>
+				<span class="at">issuedBy</span><span class="av">="</span><span class="atv">
+[AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE..."</span>
+				<span class="at">unknown</span><span class="av">="</span><span class="atv">boolean"</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- This repeatable data element provides the tax identification number (TIN) used by the tax administration of the jurisdiction of residence of the entity. In case the entity does not have a TIN, or the TIN is not known  to the sending Competent Authority, the value “NOTIN” should be entered [OECD Specific] and the Unknown attribute (see below) must be set to “true”. Furthermore, in case more than one TIN are provided, any provided element cannot be flagged as “unknown”.
+					[EU Specific]: This element must be present for both Reporting Platform Operator and Entity Seller.: --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;/</span><span class="tn">TIN</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- This data element can be provided (and repeated) if there are other INs available, such as a company registration number or an Entity Identification Number (EIN).
+					[EU Specific]:
+					•	Reporting Platform Operator: Where relevant, the individual identification number (IIN) shall be provided
+					•	Entity Seller: The business registration number (BRN) must be provided <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">IN</span>
+				<span class="at">issuedBy</span><span class="av">="</span><span class="atv">
+[AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE..."</span>
+				<span class="at">INType</span><span class="av">="</span><span class="atv">
+[LEI,EIN,IIN,BRN,Other]
+
 -<b>required</b>"</span>
-				<span class="lt">&gt;</span><br/><span class="i6 lt"><span class="comment">&lt;!-- UoMType --&gt;</span></span><br/>
-				<span class="i6 lt">&lt;</span><span class="tn">Name</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- string --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Name</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- This data element can be provided (and repeated) if there are other INs available, such as a company registration number or an Entity Identification Number (EIN).
+					[EU Specific]:
+					•	Reporting Platform Operator: Where relevant, the individual identification number (IIN) shall be provided
+					•	Entity Seller: The business registration number (BRN) must be provided: --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;/</span><span class="tn">IN</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">VAT</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- This data element can be provided when a VAT Identification number is available.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">VAT</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- This element should contain the legal name of the entity, including the domestic designation for the legal form, as indicated in its articles of incorporation or any similar document. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- This element should contain the legal name of the entity, including the domestic designation for the legal form, as indicated in its articles of incorporation or any similar document.: --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;/</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">PlatformBusinessName</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- The repeatable Platform Business Name element identifies the business name(s) of theother Reporting Platform(s) in respect of which the Reporting Platform Operator is reporting. 
+This element must not be used for the Entity Sellers.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">PlatformBusinessName</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- This data element should contain the address of the entity, including the country code of the address as well as the type of the address, indicating the legal character of that address. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">Address</span>
+				<span class="at">legalAddressType</span><span class="av">="</span><span class="atv">
+[OECD301,OECD302,OECD303,OECD304,OECD305]
+"</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">CountryCode</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- This data element provides the country code associated with the entity’s (or person’s) address.:CountryCode_Type
+,max length: 2
+,min length: 1 --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">CountryCode</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i9 lt">&lt;</span><span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- This data element allows input of address information in free text. It should only be used in exceptional circumstances when it is impossible to provide the address in the fixed format.:string
+,max length: 4000
+,min length: 1 --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i9 lt">&lt;</span><span class="tn">AddressFix</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">Street</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The street.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Street</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">BuildingIdentifier</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i11 block">&lt;!-- The identifier of the building on the street, typically a number.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i10"/>
+				<span class="lt">&lt;</span>/<span class="tn">BuildingIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">SuiteIdentifier</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i11 block">&lt;!-- The identifier of an office or similar part of a building.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i10"/>
+				<span class="lt">&lt;</span>/<span class="tn">SuiteIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">FloorIdentifier</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The identifier of a floor within a building.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">FloorIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">DistrictName</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The name of the district of the address.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">DistrictName</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">POB</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The post office box.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">POB</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">PostCode</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i11 block">&lt;!-- The post code of the address, which must be provided if available.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i10"/>
+				<span class="lt">&lt;</span>/<span class="tn">PostCode</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">City</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The city of the address.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">City</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">CountrySubentity</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i11 block">&lt;!-- A geographic area of the country larger than district or city, for example a county, a department, a Land, a canton, etc.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i10"/>
+				<span class="lt">&lt;</span>/<span class="tn">CountrySubentity</span>
 				<span class="lt">&gt;</span><br/>
-				<span class="i5 lt">&lt;/</span><span class="tn">UoM</span>
-				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
-				<span class="i5 lt">&lt;</span><span class="tn">Qty</span>
+				<span class="i9 lt">&lt;/</span><span class="tn">AddressFix</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">AddressFree</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- decimal --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Qty</span>
-				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
-				<span class="i5 lt">&lt;</span><span class="tn">Price</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- This data element allows input of address information in free text. It should only be used in exceptional circumstances when it is impossible to provide the address in the fixed format.:string
+,max length: 4000
+,min length: 1 --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i8 lt">&lt;/</span><span class="tn">Address</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">Nexus</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- decimal --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Price</span>
-				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
-				<span class="i5 lt">&lt;</span><span class="tn">BasePrice</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- [EU Specific] This data element provides the reason for which the information will be reported to the competent authority of the EU Member State.
+					This data element must not be used for Entity Seller.:
+[RPONEX1,RPONEX2,RPONEX3,RPONEX4,RPONEX5]
+ --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">Nexus</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">AssumedReporting</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- decimal --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">BasePrice</span>
-				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
-				<span class="i5 lt">&lt;</span><span class="tn">Sum</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- The Assumed Reporting element identifies whether the Reporting Platform Operator is not reporting information on Reportable Sellers, because another Reporting Platform Operator has assumed the reporting.
+					When “AssumedReporting” is set to “true”, it means that another Reporting Platform Operator reported for the Reporting Platform Operator. Otherwise, this element must be set to “false”.
+					This element is mandatory for Reporting Platform Operator and must not be provided for an Entity Seller.
+					By way of an example, Platform Z is operated by two Platform Operators: Platform Operator 1 (resident in jurisdiction 1) and Platform Operator 2 (resident in jurisdiction 2). In satisfying the reporting requirements, Platform Operator 1 has obtained assurances from Platform Operator 2 that it will fulfil the reporting obligations with respect to all of the Reportable Sellers of Platform Operator 1 in jurisdiction 2. 
+					Platform Operator 1 will therefore provide its identification information and set the AssumedReporting element to “true” to notify its jurisdiction residence (jurisdiction 1) that it has relied on another Platform Operator to fulfil the reporting requirements. Platform Operator 1 will also use the AssumingPlatformOperator element (discussed further below) to report to its jurisdiction (jurisdiction 1) identification information on Platform Operator 2, assuming the reporting obligation in the name of Platform Operator 1. Platform Operator 1 will not provide ReportableSeller element.
+					At the same time, Platform Operator 2 will use the AssumedPlatformOperator element (discussed further below) to report to its jurisdiction of residence (jurisdiction 2) identification information on Platform Operator 1, for which it has assumed reporting obligations, and complete the Platform Operator element for itself.
+					[EU Specific] This element is optional for the purposes of [EU DIR2021/514].
+:boolean --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">AssumedReporting</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i7 lt">&lt;/</span><span class="tn">EntSellerID</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- The Financial Identifier is an optional (mandatory) element that reflects the Financial Account Identifier which, under the OECD Model Rules or [EU Specific] [EU DIR2021/514], is the unique identifying number or reference available to the Reporting Platform Operator of the bank account or other payment account to which the Consideration is paid or credited. Under subparagraphs B(2)(c) and B(3)(c) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(b) and B(3)(b) of Section III of [EU DIR2021/514], the Financial Identifier must be reported and exchanged provided that it is available to the Reporting Platform Operator and that the jurisdiction of the Reportable Seller’s residence has indicated that it wishes to receive such Financial Identifiers for taxpayer matching purposes. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">FinancialIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- Entity Identification Number, which contains the Financial Account Identifier pertaining to the Reportable Seller should be reflected. Financial Account Identifiers can include the IBAN number, sort code and account number and any other payment account identifier that the Reporting Platform Operator used for transferring the Consideration in respect to a Reportable Seller. --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">Identifier</span>
+				<span class="at">AccountNumberType</span><span class="av">="</span><span class="atv">string
+,max length: 200
+,min length: 1"</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- decimal --&gt;</span>
-				<span class="lt">&lt;</span>/<span class="tn">Sum</span>
-				<span class="lt">&gt;</span><br/><span class="i5 lt"><span class="comment">&lt;!-- RowType --&gt;</span></span><br/>
-				<span class="i5 lt">&lt;</span><span class="tn">Tax</span>
-				<span class="at">code</span><span class="av">="</span><span class="atv">string
+				<br/>
+				<span class="comment i9 block">&lt;!-- Entity Identification Number, which contains the Financial Account Identifier pertaining to the Reportable Seller should be reflected. Financial Account Identifiers can include the IBAN number, sort code and account number and any other payment account identifier that the Reporting Platform Operator used for transferring the Consideration in respect to a Reportable Seller.: --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;/</span><span class="tn">Identifier</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">AccountHolderName</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- The Account Holder Name field is an optional (mandatory) element which, reflecting subparagraphs B(2)(d) and B(3)(d) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(c) and B(3)(c) of Section III of [EU DIR2021/514], contains the name of the holder of the financial account to which the Consideration is paid or credited, where different from the name of the Reportable Seller and to the extent available to the Reporting Platform Operator.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">AccountHolderName</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">OtherInfo</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- Reflecting subparagraphs B(2)(d) and B(3)(d) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(c) and B(3)(c) of Section III of [EU DIR2021/514], the OtherInfo field contains any other identifying information available to the Reporting Platform Operator with respect to that account holder.:string
+,max length: 400
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">OtherInfo</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i7 lt">&lt;/</span><span class="tn">FinancialIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- [EU Specific] This data element provides information on any permanent establishment through which Relevant Activities are carried out by the Entity Seller in the Union, indicating each respective EU Member State where such a permanent establishment is located. --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">PermanentEstablishments</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">PermanentEstablishment</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- 
+[AT,BE,BG,CY,CZ,DK,EE,FI,FR,DE,GR,HU,HR,IE,IT,LV,LT,LU,MT,NL,PL,PT,RO,SK,SI,ES,SE]
+ --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">PermanentEstablishment</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i7 lt">&lt;/</span><span class="tn">PermanentEstablishments</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">Standard</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The GVS element should be completed in case the Reporting Platform Operator has relied on an approved Government Verification Service in order to identify and document the Entity Seller. --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">GVS</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NameGVS</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- The Name GVS element contains the legal name of the Reportable Seller.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">NameGVS</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">JurisdictionGVS</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- The Jurisdiction GVS element identifies the jurisdiction whose Government Verification Service was relied upon by the Reporting Platform Operator in respect of the Reportable Seller.
+					It uses the 2-character alphabetic country code and country name list based on the ISO 3166-1 Alpha 2 standard.:CountryCode_Type --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">JurisdictionGVS</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ReferenceGVS</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- The Reference GVS element contains the unique reference number or code provided by the jurisdiction whose GVS was used, allowing that jurisdiction to match the Reportable Seller to a taxpayer within its database.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">ReferenceGVS</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">OtherTINGVS</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- Reflecting subparagraph B(2)(b) and B(3)(b) of Section III of the OECD Model Rules, the Other TIN GVS element contains any TIN available to the Reporting Platform Operator, including the jurisdiction of issuance.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">OtherTINGVS</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- The Financial Identifier is an optional (mandatory) element that reflects the Financial Account Identifier which is the unique identifying number or reference available to the Reporting Platform Operator of the bank account or other payment account to which the Consideration is paid or credited. --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">FinancialIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- Entity Identification Number, which contains the Financial Account Identifier pertaining to the Reportable Seller should be reflected. Financial Account Identifiers can include the IBAN number, sort code and account number and any other payment account identifier that the Reporting Platform Operator used for transferring the Consideration in respect to a Reportable Seller. --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">Identifier</span>
+				<span class="at">AccountNumberType</span><span class="av">="</span><span class="atv">string
+,max length: 200
+,min length: 1"</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- Entity Identification Number, which contains the Financial Account Identifier pertaining to the Reportable Seller should be reflected. Financial Account Identifiers can include the IBAN number, sort code and account number and any other payment account identifier that the Reporting Platform Operator used for transferring the Consideration in respect to a Reportable Seller.: --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;/</span><span class="tn">Identifier</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">AccountHolderName</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- The Account Holder Name field is an optional (mandatory) element which, reflecting subparagraphs B(2)(d) and B(3)(d) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(c) and B(3)(c) of Section III of [EU DIR2021/514], contains the name of the holder of the financial account to which the Consideration is paid or credited, where different from the name of the Reportable Seller and to the extent available to the Reporting Platform Operator.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">AccountHolderName</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">OtherInfo</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- Reflecting subparagraphs B(2)(d) and B(3)(d) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(c) and B(3)(c) of Section III of [EU DIR2021/514], the OtherInfo field contains any other identifying information available to the Reporting Platform Operator with respect to that account holder.:string
+,max length: 400
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">OtherInfo</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i7 lt">&lt;/</span><span class="tn">FinancialIdentifier</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">GVS</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i5 lt">&lt;/</span><span class="tn">EntitySeller</span>
+				<span class="lt">&gt;</span><br/><span class="i5 lt">&lt;</span><span class="tn">IndividualSeller</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Standard element reflects the standard due diligence procedures and is further comprised of the IndSellerID element (which follows the PersonParty Type) and the Financial Identifier element. Platform Operators by default would use the standard due diligence procedures, but can also rely on the GVS procedure where it has been made available by the Reportable Jurisdiction .
+											The PersonParty_Type, as enumerated in Section III of the OECD Model Rules or [EU Specific] [EU DIR2021/514], defines the information to be included in relation to an individual where the standard due diligence procedures are followed. --&gt;</span>
+				<span class="i6 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i6 lt">&lt;</span><span class="tn">Standard</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- The IndSellerID element identifies the individual Seller and follows the PersonParty_Type --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">IndSellerID</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">ResCountryCode</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- This repeatable data element describes the residence country code(s) of the individual Seller and must be present in all data records. This should correspond to the jurisdiction of residence identified on the basis of the due diligence requirements of the OECD Model Rules or [EU Specific] [EU DIR2021/514]. Specifically, under the OECD Model Rules, the residence country code of an individual Seller should correspond to the jurisdiction of the Seller’s primary residence.:
+[AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE,BZ,BJ,BM,BT,BO,BQ,BA,BW,BV,BR,IO,BN,BG,BF,BI,KH,CM,CA,CV,KY,CF,TD,CL,CN,CX,CC,CO,KM,CG,CD,CK,CR,CI,HR,CU,CW,CY,CZ,DK,DJ,DM,DO,EC,EG,SV,GQ,ER,EE,ET,FK,FO,FJ,FI,FR,GF,PF,TF,GA,GM,GE,DE,GH,GI,GR,GL,GD,GP,GU,GT,GG,GN,GW,GY,HT,HM,VA,HN,HK,HU,IS,IN,ID,IR,IQ,IE,IM,IL,IT,JM,JP,JE,JO,KZ,KE,KI,KP,KR,KW,KG,LA,LV,LB,LS,LR,LY,LI,LT,LU,MO,MK,MG,MW,MY,MV,ML,MT,MH,MQ,MR,MU,YT,MX,FM,MD,MC,MN,ME,MS,MA,MZ,MM,NA,NR,NP,NL,NC,NZ,NI,NE,NG,NU,NF,MP,NO,OM,PK,PW,PS,PA,PG,PY,PE,PH,PN,PL,PT,PR,QA,RE,RO,RU,RW,BL,SH,KN,LC,MF,PM,VC,WS,SM,ST,SA,SN,RS,SC,SL,SG,SX,SK,SI,SB,SO,ZA,GS,SS,ES,LK,SD,SR,SJ,SZ,SE,CH,SY,TW,TJ,TZ,TH,TL,TG,TK,TO,TT,TN,TR,TM,TC,TV,UG,UA,AE,GB,US,UM,UY,UZ,VU,VE,VN,VG,VI,WF,EH,YE,ZM,ZW,XK,X5,XX]
+ --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">ResCountryCode</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- This repeatable data element provides the tax identification number (TIN) used by the tax administration of the jurisdiction of residence of the individual Seller. In case the individual Seller does not have a TIN, the jurisdiction of residence does not issue a TIN or require the collection of the TIN issued to such Seller, or the TIN is not known to the sending Competent Authority, the Unknown attribute (see below) must be set to “true” and the value “NOTIN” should be entered [OECD Specific]. Furthermore, in case more than one TIN are provided, any provided element cannot be flagged as “unknown”. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">TIN</span>
+				<span class="at">issuedBy</span><span class="av">="</span><span class="atv">
+[AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE..."</span>
+				<span class="at">unknown</span><span class="av">="</span><span class="atv">boolean"</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- This repeatable data element provides the tax identification number (TIN) used by the tax administration of the jurisdiction of residence of the individual Seller. In case the individual Seller does not have a TIN, the jurisdiction of residence does not issue a TIN or require the collection of the TIN issued to such Seller, or the TIN is not known to the sending Competent Authority, the Unknown attribute (see below) must be set to “true” and the value “NOTIN” should be entered [OECD Specific]. Furthermore, in case more than one TIN are provided, any provided element cannot be flagged as “unknown”.: --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;/</span><span class="tn">TIN</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">VAT</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- This data element must be provided when a VAT Identification number is available.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">VAT</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- This element should contain the name of the person. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">Name</span>
+				<span class="at">nameType</span><span class="av">="</span><span class="atv">
+[OECD201,OECD202,OECD203,OECD204,OECD205,OECD206,OECD207,OECD208]
+"</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">PrecedingTitle</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- His Excellency,Estate of the Late ...:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">PrecedingTitle</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">Title</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- Greeting title. Example: Mr, Dr, Ms, Herr, etc. Can have multiple titles.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">Title</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i9">&lt;!-- FirstName of the person --&gt;</span>
+				<span class="i9 lt">&lt;</span><span class="tn">FirstName</span>
+				<span class="at">xnlNameType</span><span class="av">="</span><span class="atv">string
+,max length: 200
+,min length: 1"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- FirstName of the person: --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FirstName</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i9">&lt;!-- Middle name (essential part of the name for many nationalities). Example: Sakthi in "Nivetha Sakthi Shantha". Can have multiple middle names. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i9 lt">&lt;</span><span class="tn">MiddleName</span>
+				<span class="at">xnlNameType</span><span class="av">="</span><span class="atv">string
+,max length: 200
+,min length: 1"</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- Middle name (essential part of the name for many nationalities). Example: Sakthi in "Nivetha Sakthi Shantha". Can have multiple middle names.: --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;/</span><span class="tn">MiddleName</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i9">&lt;!-- de, van, van de, von, etc. Example: Derick de Clarke --&gt;</span>
+				<span class="i9 lt">&lt;</span><span class="tn">NamePrefix</span>
+				<span class="at">xnlNameType</span><span class="av">="</span><span class="atv">string
+,max length: 200
+,min length: 1"</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- de, van, van de, von, etc. Example: Derick de Clarke: --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;/</span><span class="tn">NamePrefix</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i9">&lt;!-- Represents the position of the name in a name string. Can be Given Name, Forename, Christian Name, Surname, Family Name, etc. Use the attribute "NameType" to define what type this name is.
+In case of a company, this field can be used for the company name. --&gt;</span>
+				<span class="i9 lt">&lt;</span><span class="tn">LastName</span>
+				<span class="at">xnlNameType</span><span class="av">="</span><span class="atv">string
+,max length: 200
+,min length: 1"</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- Represents the position of the name in a name string. Can be Given Name, Forename, Christian Name, Surname, Family Name, etc. Use the attribute "NameType" to define what type this name is.
+In case of a company, this field can be used for the company name.: --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;/</span><span class="tn">LastName</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">GenerationIdentifier</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- Jnr, Thr Third, III:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">GenerationIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">Suffix</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- Could be compressed initials - PhD, VC, QC:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Suffix</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">GeneralSuffix</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- Deceased, Retired ...:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">GeneralSuffix</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i8 lt">&lt;/</span><span class="tn">Name</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- This data element should contain the address of the person, including the country code of the address as well as the type of the address, indicating the legal character of that address. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">Address</span>
+				<span class="at">legalAddressType</span><span class="av">="</span><span class="atv">
+[OECD301,OECD302,OECD303,OECD304,OECD305]
+"</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">CountryCode</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- This data element provides the country code associated with the entity’s (or person’s) address.:CountryCode_Type
+,max length: 2
+,min length: 1 --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">CountryCode</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i9 lt">&lt;</span><span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- This data element allows input of address information in free text. It should only be used in exceptional circumstances when it is impossible to provide the address in the fixed format.:string
+,max length: 4000
+,min length: 1 --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i9 lt">&lt;</span><span class="tn">AddressFix</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">Street</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The street.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Street</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">BuildingIdentifier</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i11 block">&lt;!-- The identifier of the building on the street, typically a number.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i10"/>
+				<span class="lt">&lt;</span>/<span class="tn">BuildingIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">SuiteIdentifier</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i11 block">&lt;!-- The identifier of an office or similar part of a building.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i10"/>
+				<span class="lt">&lt;</span>/<span class="tn">SuiteIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">FloorIdentifier</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The identifier of a floor within a building.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">FloorIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">DistrictName</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The name of the district of the address.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">DistrictName</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">POB</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The post office box.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">POB</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">PostCode</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i11 block">&lt;!-- The post code of the address, which must be provided if available.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i10"/>
+				<span class="lt">&lt;</span>/<span class="tn">PostCode</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">City</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The city of the address.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">City</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">CountrySubentity</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i11 block">&lt;!-- A geographic area of the country larger than district or city, for example a county, a department, a Land, a canton, etc.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i10"/>
+				<span class="lt">&lt;</span>/<span class="tn">CountrySubentity</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i9 lt">&lt;/</span><span class="tn">AddressFix</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- This data element allows input of address information in free text. It should only be used in exceptional circumstances when it is impossible to provide the address in the fixed format.:string
+,max length: 4000
+,min length: 1 --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i8 lt">&lt;/</span><span class="tn">Address</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">Nationality</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- The nationality element is not to be provided as part of the DPI schema.:
+[AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE,BZ,BJ,BM,BT,BO,BQ,BA,BW,BV,BR,IO,BN,BG,BF,BI,KH,CM,CA,CV,KY,CF,TD,CL,CN,CX,CC,CO,KM,CG,CD,CK,CR,CI,HR,CU,CW,CY,CZ,DK,DJ,DM,DO,EC,EG,SV,GQ,ER,EE,ET,FK,FO,FJ,FI,FR,GF,PF,TF,GA,GM,GE,DE,GH,GI,GR,GL,GD,GP,GU,GT,GG,GN,GW,GY,HT,HM,VA,HN,HK,HU,IS,IN,ID,IR,IQ,IE,IM,IL,IT,JM,JP,JE,JO,KZ,KE,KI,KP,KR,KW,KG,LA,LV,LB,LS,LR,LY,LI,LT,LU,MO,MK,MG,MW,MY,MV,ML,MT,MH,MQ,MR,MU,YT,MX,FM,MD,MC,MN,ME,MS,MA,MZ,MM,NA,NR,NP,NL,NC,NZ,NI,NE,NG,NU,NF,MP,NO,OM,PK,PW,PS,PA,PG,PY,PE,PH,PN,PL,PT,PR,QA,RE,RO,RU,RW,BL,SH,KN,LC,MF,PM,VC,WS,SM,ST,SA,SN,RS,SC,SL,SG,SX,SK,SI,SB,SO,ZA,GS,SS,ES,LK,SD,SR,SJ,SZ,SE,CH,SY,TW,TJ,TZ,TH,TL,TG,TK,TO,TT,TN,TR,TM,TC,TV,UG,UA,AE,GB,US,UM,UY,UZ,VU,VE,VN,VG,VI,WF,EH,YE,ZM,ZW,XK,X5,XX]
+ --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">Nationality</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- This data element contains the birth information of an Individual Seller. It is always required to be provided unless such Seller is documented pursuant to a Government Verification Service and is composed of the date and the place of birth. --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">BirthInfo</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">BirthDate</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- This element provides the date of birth, complying with the following format: YYYY-MM-DD.:date --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">BirthDate</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i9">&lt;!-- This element provides information about the place of birth. This element must be filled in at least with the city and the country of birth (either the current jurisdiction identified by 2-characters country code or a former jurisdiction identified by a name). --&gt;</span>
+				<span class="i9 lt">&lt;</span><span class="tn">BirthPlace</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">City</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The city of birth.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">City</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">CitySubentity</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The city subentity of birth.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">CitySubentity</span>
+				<span class="lt">&gt;</span><br/><span class="i10 lt">&lt;</span><span class="tn">CountryInfo</span>
+				<span class="lt">&gt;</span><br/><span class="i11 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i11 lt">&lt;</span><span class="tn">CountryCode</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The current jurisdiction of birth.:
+[AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE,BZ,BJ,BM,BT,BO,BQ,BA,BW,BV,BR,IO,BN,BG,BF,BI,KH,CM,CA,CV,KY,CF,TD,CL,CN,CX,CC,CO,KM,CG,CD,CK,CR,CI,HR,CU,CW,CY,CZ,DK,DJ,DM,DO,EC,EG,SV,GQ,ER,EE,ET,FK,FO,FJ,FI,FR,GF,PF,TF,GA,GM,GE,DE,GH,GI,GR,GL,GD,GP,GU,GT,GG,GN,GW,GY,HT,HM,VA,HN,HK,HU,IS,IN,ID,IR,IQ,IE,IM,IL,IT,JM,JP,JE,JO,KZ,KE,KI,KP,KR,KW,KG,LA,LV,LB,LS,LR,LY,LI,LT,LU,MO,MK,MG,MW,MY,MV,ML,MT,MH,MQ,MR,MU,YT,MX,FM,MD,MC,MN,ME,MS,MA,MZ,MM,NA,NR,NP,NL,NC,NZ,NI,NE,NG,NU,NF,MP,NO,OM,PK,PW,PS,PA,PG,PY,PE,PH,PN,PL,PT,PR,QA,RE,RO,RU,RW,BL,SH,KN,LC,MF,PM,VC,WS,SM,ST,SA,SN,RS,SC,SL,SG,SX,SK,SI,SB,SO,ZA,GS,SS,ES,LK,SD,SR,SJ,SZ,SE,CH,SY,TW,TJ,TZ,TH,TL,TG,TK,TO,TT,TN,TR,TM,TC,TV,UG,UA,AE,GB,US,UM,UY,UZ,VU,VE,VN,VG,VI,WF,EH,YE,ZM,ZW,XK,X5,XX]
+ --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">CountryCode</span>
+				<span class="lt">&gt;</span><br/><span class="i11 lt">&lt;</span><span class="tn">FormerCountryName</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i12 block">&lt;!-- The former jurisdiction of birth. The Former Country Name element should be used in case the person was born in a country that has since ceased to exist.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i11"/>
+				<span class="lt">&lt;</span>/<span class="tn">FormerCountryName</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i10 lt">&lt;/</span><span class="tn">CountryInfo</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i9 lt">&lt;/</span><span class="tn">BirthPlace</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i8 lt">&lt;/</span><span class="tn">BirthInfo</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i7 lt">&lt;/</span><span class="tn">IndSellerID</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- The Financial Identifier is an optional (mandatory) and repeatable element that reflects the Financial Account Identifier which, under the OECD Model Rules or [EU Specific] [EU DIR2021/514], is the unique identifying number or reference available to the Reporting Platform Operator of the bank account or other payment account to which the Consideration is paid or credited. Under subparagraphs B(2)(c) and B(3)(c) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(b) and B(3)(b) of Section III of [EU DIR2021/514], the Financial Identifier must be reported and exchanged provided that it is available to the Reporting Platform Operator and that the jurisdiction of the Reportable Seller’s residence has indicated that it wishes to receive such Financial Identifiers for taxpayer matching purposes. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">FinancialIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- Entity Identification Number, which contains the Financial Account Identifier pertaining to the Reportable Seller should be reflected. Financial Account Identifiers can include the IBAN number, sort code and account number and any other payment account identifier that the Reporting Platform Operator used for transferring the Consideration in respect to a Reportable Seller. --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">Identifier</span>
+				<span class="at">AccountNumberType</span><span class="av">="</span><span class="atv">string
+,max length: 200
+,min length: 1"</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- Entity Identification Number, which contains the Financial Account Identifier pertaining to the Reportable Seller should be reflected. Financial Account Identifiers can include the IBAN number, sort code and account number and any other payment account identifier that the Reporting Platform Operator used for transferring the Consideration in respect to a Reportable Seller.: --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;/</span><span class="tn">Identifier</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">AccountHolderName</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- The Account Holder Name field is an optional (mandatory) element which, reflecting subparagraphs B(2)(d) and B(3)(d) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(c) and B(3)(c) of Section III of [EU DIR2021/514], contains the name of the holder of the financial account to which the Consideration is paid or credited, where different from the name of the Reportable Seller and to the extent available to the Reporting Platform Operator.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">AccountHolderName</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">OtherInfo</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- Reflecting subparagraphs B(2)(d) and B(3)(d) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(c) and B(3)(c) of Section III of [EU DIR2021/514], the OtherInfo field contains any other identifying information available to the Reporting Platform Operator with respect to that account holder.:string
+,max length: 400
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">OtherInfo</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i7 lt">&lt;/</span><span class="tn">FinancialIdentifier</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">Standard</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The GVS element should be completed in case the Reporting Platform Operator has relied on an approved Government Verification Service in order to identify and document the Individual Seller. --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">GVS</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NameGVS</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- The Name GVS element contains the legal name of the Reportable Seller.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">NameGVS</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">JurisdictionGVS</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- The Jurisdiction GVS element identifies the jurisdiction whose Government Verification Service was relied upon by the Reporting Platform Operator in respect of the Reportable Seller.
+					It uses the 2-character alphabetic country code and country name list based on the ISO 3166-1 Alpha 2 standard.:CountryCode_Type --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">JurisdictionGVS</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ReferenceGVS</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- The Reference GVS element contains the unique reference number or code provided by the jurisdiction whose GVS was used, allowing that jurisdiction to match the Reportable Seller to a taxpayer within its database.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">ReferenceGVS</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">OtherTINGVS</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- Reflecting subparagraph B(2)(b) and B(3)(b) of Section III of the OECD Model Rules, the Other TIN GVS element contains any TIN available to the Reporting Platform Operator, including the jurisdiction of issuance.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">OtherTINGVS</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- The Financial Identifier is an optional (mandatory) element that reflects the Financial Account Identifier which is the unique identifying number or reference available to the Reporting Platform Operator of the bank account or other payment account to which the Consideration is paid or credited. --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">FinancialIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i8">&lt;!-- Entity Identification Number, which contains the Financial Account Identifier pertaining to the Reportable Seller should be reflected. Financial Account Identifiers can include the IBAN number, sort code and account number and any other payment account identifier that the Reporting Platform Operator used for transferring the Consideration in respect to a Reportable Seller. --&gt;</span>
+				<span class="i8 lt">&lt;</span><span class="tn">Identifier</span>
+				<span class="at">AccountNumberType</span><span class="av">="</span><span class="atv">string
+,max length: 200
+,min length: 1"</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- Entity Identification Number, which contains the Financial Account Identifier pertaining to the Reportable Seller should be reflected. Financial Account Identifiers can include the IBAN number, sort code and account number and any other payment account identifier that the Reporting Platform Operator used for transferring the Consideration in respect to a Reportable Seller.: --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;/</span><span class="tn">Identifier</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">AccountHolderName</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- The Account Holder Name field is an optional (mandatory) element which, reflecting subparagraphs B(2)(d) and B(3)(d) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(c) and B(3)(c) of Section III of [EU DIR2021/514], contains the name of the holder of the financial account to which the Consideration is paid or credited, where different from the name of the Reportable Seller and to the extent available to the Reporting Platform Operator.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">AccountHolderName</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">OtherInfo</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- Reflecting subparagraphs B(2)(d) and B(3)(d) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(c) and B(3)(c) of Section III of [EU DIR2021/514], the OtherInfo field contains any other identifying information available to the Reporting Platform Operator with respect to that account holder.:string
+,max length: 400
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">OtherInfo</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i7 lt">&lt;/</span><span class="tn">FinancialIdentifier</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">GVS</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i5 lt">&lt;/</span><span class="tn">IndividualSeller</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i4 lt">&lt;/</span><span class="tn">Identity</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i4">&lt;!-- The Relevant Activities element includes information on the Relevant Activities provided by Reportable Sellers and the Consideration derived therefrom. The element is comprised of the Immovable Property, Personal Services, sale  of Goods and Transportation Rental elements, reflecting the nature of the activities provided by the Reportable Seller. Under the OECD Model Rules and [EU DIR2021/514], information in respect of the Immovable Property and Personal Services elements must be provided. Under the OECD Extended Scope and [EU DIR2021/514], information in respect of the sale of Goods and Transportation Rental elements must also be provided. --&gt;</span>
+				<span class="i4 lt">&lt;</span><span class="tn">RelevantActivities</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i5">&lt;!-- The Immovable Property element contains information on Relevant Activities provided by a Reportable Seller in relation to the rental of immovable property. It comprises the repeatable Property Listing element. --&gt;</span>
+				<span class="i5 lt">&lt;</span><span class="tn">ImmovableProperty</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Property Listing element is comprised of the Address, Land Registration Number, Consideration, Number of Activities, Fees, Taxes, Property Type and Rented days elements. <b>Maximum number of repetitions of this element is unlimited</b> --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">PropertyListing</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- The Address element is further comprised of the elements as described above under the Address Type. --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">Address</span>
+				<span class="at">legalAddressType</span><span class="av">="</span><span class="atv">
+[OECD301,OECD302,OECD303,OECD304,OECD305]
+"</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">CountryCode</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- This data element provides the country code associated with the entity’s (or person’s) address.:CountryCode_Type
+,max length: 2
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">CountryCode</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i8 lt">&lt;</span><span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- This data element allows input of address information in free text. It should only be used in exceptional circumstances when it is impossible to provide the address in the fixed format.:string
+,max length: 4000
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt"><span class="comment"><b>&lt;-- One of the possible options --&gt;</b></span></span><br/>
+				<span class="i8 lt">&lt;</span><span class="tn">AddressFix</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">Street</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The street.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">Street</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">BuildingIdentifier</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- The identifier of the building on the street, typically a number.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">BuildingIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">SuiteIdentifier</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- The identifier of an office or similar part of a building.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">SuiteIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">FloorIdentifier</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The identifier of a floor within a building.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">FloorIdentifier</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">DistrictName</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The name of the district of the address.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">DistrictName</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">POB</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The post office box.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">POB</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">PostCode</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- The post code of the address, which must be provided if available.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">PostCode</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">City</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- The city of the address.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">City</span>
+				<span class="lt">&gt;</span><br/><span class="i9 lt">&lt;</span><span class="tn">CountrySubentity</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i10 block">&lt;!-- A geographic area of the country larger than district or city, for example a county, a department, a Land, a canton, etc.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i9"/>
+				<span class="lt">&lt;</span>/<span class="tn">CountrySubentity</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i8 lt">&lt;/</span><span class="tn">AddressFix</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i9 block">&lt;!-- This data element allows input of address information in free text. It should only be used in exceptional circumstances when it is impossible to provide the address in the fixed format.:string
+,max length: 4000
+,min length: 1 --&gt;</span>
+				<span class="i8"/>
+				<span class="lt">&lt;</span>/<span class="tn">AddressFree</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i7 lt">&lt;/</span><span class="tn">Address</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">LandRegistrationNumber</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- The Land Registration Number element contains the land registration number, which under subparagraph B(3)(f) of Section III of the OECD Model Rules or [EU Specific] subparagraph B(3)(e) of Section III of [EU DIR2021/514], is reportable if available to the Reporting Platform Operator. For these purposes, the land registration number includes functional equivalents, such as a cadastral number.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">LandRegistrationNumber</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- The Consideration element contains information on the Consideration received by a Reportable Seller in relation to the Relevant Activities provided. It is further split into four elements, representing the quarters during which the Consideration was paid or credited to a Reportable Seller. In this respect, Consideration is considered to be paid or credited to a Reportable Seller when it is paid or credited to an account specified by the Reportable Seller (as stated in paragraph 32 of the Commentary to Section I of the OECD  Model Rules).
+					For Relevant Activities involving the rental of immovable property, the Consideration information must be provided separately with respect to each Property Listing. --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">Consideration</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">ConsQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
 -<b>required</b>"</span>
 				<span class="lt">&gt;</span>
-				<span class="comment">&lt;!-- decimal --&gt;</span>
-				<span class="lt">&lt;/</span><span class="tn">Tax</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">ConsQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">ConsQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">ConsQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ4</span>
 				<span class="lt">&gt;</span><br/>
-				<span class="i4 lt">&lt;/</span><span class="tn">Row</span>
+				<span class="i7 lt">&lt;/</span><span class="tn">Consideration</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- The Number of Activities element specified the number of Relevant Activities that a Reportable Seller has provided. It is further split into four elements. These elements represent the four quarters in respect of which reporting of the number of Relevant Activities in respect of which Consideration was paid or credited to the Reportable Seller is required.
+					For Relevant Activities involving the rental of immovable property, the number of activities must be provided separately with respect to each Property Listing. --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">NumberOfActivities</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">NumbQ1</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">NumbQ2</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">NumbQ3</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">NumbQ4</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ4</span>
 				<span class="lt">&gt;</span><br/>
-				<span class="i3 lt">&lt;/</span><span class="tn">Rows</span>
+				<span class="i7 lt">&lt;/</span><span class="tn">NumberOfActivities</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- The Fees element specified the fees and commissions that a Reporting Platform Operator has withheld in respect of a Reportable Seller. It is split into four elements, representing the quarters in respect of which the reporting of fees or commissions withheld or charged by the Reporting Platform Operator is required under subparagraphs B(2)(g) and B(3)(h) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(f) and B(3)(g) of Section III of [EU DIR2021/514].  --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">Fees</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">FeesQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">FeesQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">FeesQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">FeesQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ4</span>
 				<span class="lt">&gt;</span><br/>
-				<span class="i2 lt">&lt;/</span><span class="tn">Document</span>
+				<span class="i7 lt">&lt;/</span><span class="tn">Fees</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i7">&lt;!-- The Taxes element specifies the taxes that a Reporting Platform Operator has withheld in respect of a Reportable Seller. It is further split into four elements, representing the quarters in respect of which reporting of taxes withheld by the Reporting Platform Operator is required under subparagraphs B(2)(g) and B(3)(h) of Section III of the OECD Model Rules or [EU Specific] subparagraphs B(2)(f) and B(3)(g) of Section III of [EU DIR2021/514]. --&gt;</span>
+				<span class="i7 lt">&lt;</span><span class="tn">Taxes</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">TaxQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">TaxQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">TaxQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i8 lt">&lt;</span><span class="tn">TaxQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ4</span>
 				<span class="lt">&gt;</span><br/>
-				<span class="i1 lt">&lt;/</span><span class="tn">Documents</span>
+				<span class="i7 lt">&lt;/</span><span class="tn">Taxes</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">PropertyType</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- The Property Type element specifies the type of property rented. DPI901 to DPI910.:
+[DPI901,DPI902,DPI903,DPI904,DPI905,DPI906,DPI907,DPI908,DPI909,DPI910]
+ --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">PropertyType</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">OtherPropertyType</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- This element describes the type of property in case “DPI910” is selected as Property Type. This element cannot be used in case another Property Type is selected.:string
+,max length: 200
+,min length: 1 --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">OtherPropertyType</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">RentedDays</span>
+				<span class="lt">&gt;</span>
+				<br/>
+				<span class="comment i8 block">&lt;!-- The Rented Days element contains the number of days that the Property Listing was rented during the Reportable Period.
+					4 numbers max. Set the type as simple:integer
+,&gt;= 1 --&gt;</span>
+				<span class="i7"/>
+				<span class="lt">&lt;</span>/<span class="tn">RentedDays</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">PropertyListing</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i5 lt">&lt;/</span><span class="tn">ImmovableProperty</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i5">&lt;!-- The Personal Services element contains information on Relevant Activities involving time- or task-based work performed by one or more individuals, acting either independently or on behalf of an Entity, and which is carried out at the request of a user, either online or physically offline after having been facilitated via Platform. --&gt;</span>
+				<span class="i5 lt">&lt;</span><span class="tn">PersonalServices</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Consideration element contains information on the Consideration received by a Reportable Seller in relation to the Relevant Activities provided. It is further split into four elements, representing the quarters during which the Consideration was paid or credited to a Reportable Seller. In this respect, Consideration is considered to be paid or credited to a Reportable Seller when it is paid or credited to an account specified by the Reportable Seller (as stated in paragraph 32 of the Commentary to Section I of the OECD  Model Rules). --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">Consideration</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">Consideration</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Number of Activities element specified the number of Relevant Activities that a Reportable Seller has provided. It is further split into four elements. These elements represent the four quarters in respect of which reporting of the number of Relevant Activities in respect of which Consideration was paid or credited to the Reportable Seller is required. As such, that the numbers of activities are reported on the basis of the date of payment or credit of the Consideration. --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">NumberOfActivities</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ1</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ2</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ3</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ4</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">NumberOfActivities</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Fees element is further split into four elements, representing the quarters in respect of which reporting takes place.  --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">Fees</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">Fees</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Taxes element is further split into four elements, representing the quarters in respect of which reporting takes place.  --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">Taxes</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">Taxes</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i5 lt">&lt;/</span><span class="tn">PersonalServices</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i5">&lt;!-- The sale of Goods element specifies the Relevant Activities provided by a Reportable Seller with respect to sale of goods. --&gt;</span>
+				<span class="i5 lt">&lt;</span><span class="tn">SaleOfGoods</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Consideration element contains information on the Consideration received by a Reportable Seller in relation to the Relevant Activities provided. It is further split into four elements, representing the quarters during which the Consideration was paid or credited to a Reportable Seller. In this respect, Consideration is considered to be paid or credited to a Reportable Seller when it is paid or credited to an account specified by the Reportable Seller (as stated in paragraph 32 of the Commentary to Section I of the OECD  Model Rules). --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">Consideration</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">Consideration</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Number of Activities element specified the number of Relevant Activities that a Reportable Seller has provided. It is further split into four elements. These elements represent the four quarters in respect of which reporting of the number of Relevant Activities in respect of which Consideration was paid or credited to the Reportable Seller is required. As such, that the numbers of activities are reported on the basis of the date of payment or credit of the Consideration. --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">NumberOfActivities</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ1</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ2</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ3</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ4</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">NumberOfActivities</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Fees element is further split into four elements, representing the quarters in respect of which reporting takes place.  --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">Fees</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">Fees</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Taxes element is further split into four elements, representing the quarters in respect of which reporting takes place.  --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">Taxes</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">Taxes</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i5 lt">&lt;/</span><span class="tn">SaleOfGoods</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i5">&lt;!-- The Transportation Rental element specifies the Relevant Activities provided by a Reportable Seller with respect to the rental of any mode of transport. --&gt;</span>
+				<span class="i5 lt">&lt;</span><span class="tn">TransportationRental</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Consideration element contains information on the Consideration received by a Reportable Seller in relation to the Relevant Activities provided. It is further split into four elements, representing the quarters during which the Consideration was paid or credited to a Reportable Seller. In this respect, Consideration is considered to be paid or credited to a Reportable Seller when it is paid or credited to an account specified by the Reportable Seller (as stated in paragraph 32 of the Commentary to Section I of the OECD  Model Rules). --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">Consideration</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">ConsQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">ConsQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">Consideration</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Number of Activities element specified the number of Relevant Activities that a Reportable Seller has provided. It is further split into four elements. These elements represent the four quarters in respect of which reporting of the number of Relevant Activities in respect of which Consideration was paid or credited to the Reportable Seller is required. As such, that the numbers of activities are reported on the basis of the date of payment or credit of the Consideration. --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">NumberOfActivities</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ1</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ2</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ3</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">NumbQ4</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;</span>/<span class="tn">NumbQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">NumberOfActivities</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Fees element is further split into four elements, representing the quarters in respect of which reporting takes place.  --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">Fees</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">FeesQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">FeesQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">Fees</span>
+				<span class="lt">&gt;</span><br/><span class="comment block i6">&lt;!-- The Taxes element is further split into four elements, representing the quarters in respect of which reporting takes place.  --&gt;</span>
+				<span class="i6 lt">&lt;</span><span class="tn">Taxes</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ1</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ1</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ2</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ2</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ3</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ3</span>
+				<span class="lt">&gt;</span><br/><span class="i7 lt">&lt;</span><span class="tn">TaxQ4</span>
+				<span class="at">currCode</span><span class="av">="</span><span class="atv">
+[AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,B...
+-<b>required</b>"</span>
+				<span class="lt">&gt;</span>
+				<span class="comment">&lt;!-- integer --&gt;</span>
+				<span class="lt">&lt;/</span><span class="tn">TaxQ4</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i6 lt">&lt;/</span><span class="tn">Taxes</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i5 lt">&lt;/</span><span class="tn">TransportationRental</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i4 lt">&lt;/</span><span class="tn">RelevantActivities</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i3 lt">&lt;/</span><span class="tn">ReportableSeller</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i2 lt">&lt;/</span><span class="tn">DPIBody</span>
+				<span class="lt">&gt;</span><br/>
+				<span class="i1 lt">&lt;/</span><span class="tn">DPI_OECD</span>
 				<span class="lt">&gt;</span></div>
 		</div>
 	</body>

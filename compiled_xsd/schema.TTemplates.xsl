@@ -116,13 +116,59 @@
 	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Description/@lang[.!='']" mode="where4"> AND TTNames.tt_lang=@TTNames_tt_lang</xsl:template>
 	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Description/@lang']">,TTNames.tt_lang <xsl:apply-templates select="@type"/></xsl:template>
 	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Description/@lang[.!='']" mode="param"><parameter name="TTNames_tt_lang" type="xs:string"><xsl:value-of select="."/></parameter></xsl:template>
-	<!--/ns:TTemplates/ns:TTemplate/ns:Category-->
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category" mode="alias">"Category"</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category" mode="fieldName">TTemplateType.</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category" mode="fieldValue">@TTemplateType_</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category[.!='']" mode="where3"> AND TTemplateType.=@TTemplateType_</xsl:template>
-	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Category']">,TTemplateType. <xsl:apply-templates select="@type"/></xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category[.!='']" mode="param"><parameter name="TTemplateType_" type="TCategoryType"><xsl:value-of select="."/></parameter></xsl:template>
+	<!--/ns:TTemplates/ns:TTemplate/ns:Category (level 3)-->
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category[@*|*]" mode="select3">
+		<xsl:variable name="fields"><xsl:apply-templates select="*|@*" mode="select4"/>
+		</xsl:variable>
+		<xsl:variable name="where"><xsl:apply-templates select="*|@*" mode="where4"/></xsl:variable>
+		<xsl:apply-templates select="." mode="indent3"/>,(SELECT <xsl:value-of select="substring-after($fields,',')"/>
+		<xsl:apply-templates select="." mode="indent4"/>FOR XML PATH('Category'), type)</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category" mode="SubTable3">
+		<xsl:apply-templates select="." mode="indent3"/><xsl:apply-templates select="." mode="JoinType"/>transaction_categories TCategoryType ON TCategoryType.tc_id=TTemplateType.tc_id</xsl:template>
+	<!--/ns:TTemplates/ns:TTemplate/ns:Category/@id-->
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/@id" mode="alias">"@id"</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/@id" mode="fieldName">TCategoryType.tc_id</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/@id" mode="fieldValue">@TCategoryType_tc_id</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/@id[.!='']" mode="where4"> AND TCategoryType.tc_id=@TCategoryType_tc_id</xsl:template>
+	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Category/@id']">,TCategoryType.tc_id <xsl:apply-templates select="@type"/></xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/@id[.!='']" mode="param"><parameter name="TCategoryType_tc_id" type="xs:unsignedByte"><xsl:value-of select="."/></parameter></xsl:template>
+	<!--/ns:TTemplates/ns:TTemplate/ns:Category/@type-->
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/@type" mode="alias">"@type"</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/@type" mode="fieldName">TCategoryType.tc_type</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/@type" mode="fieldValue">@TCategoryType_tc_type</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/@type[.!='']" mode="where4"> AND TCategoryType.tc_type=@TCategoryType_tc_type</xsl:template>
+	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Category/@type']">,TCategoryType.tc_type <xsl:apply-templates select="@type"/></xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/@type[.!='']" mode="param"><parameter name="TCategoryType_tc_type" type="xs:string"><xsl:value-of select="."/></parameter></xsl:template>
+	<!--/ns:TTemplates/ns:TTemplate/ns:Category/ns:Name (level 4)-->
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Name[@*|*]" mode="select4">
+		<xsl:variable name="fields"><xsl:apply-templates select="*|@*" mode="select5"/>,TCategoryNames.tc_name AS "*"</xsl:variable>
+		<xsl:variable name="where"><xsl:apply-templates select="*|@*" mode="where5"/></xsl:variable>
+		<xsl:apply-templates select="." mode="indent4"/>,(SELECT <xsl:value-of select="substring-after($fields,',')"/>
+		<xsl:apply-templates select="." mode="indent5"/>FROM transaction_categories_names TCategoryNames<xsl:apply-templates select=".|*|@*" mode="SubTable5"/>
+		<xsl:apply-templates select="." mode="indent5"/>WHERE TCategoryNames.tc_id=TCategoryType.tc_id <xsl:value-of select="normalize-space($where)"/>
+		<xsl:apply-templates select="." mode="indent5"/>FOR XML PATH('Name'), type)</xsl:template>
+	<!--/ns:TTemplates/ns:TTemplate/ns:Category/ns:Name/@lang-->
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Name/@lang" mode="alias">"@lang"</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Name/@lang" mode="fieldName">TCategoryNames.tc_lang</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Name/@lang" mode="fieldValue">@TCategoryNames_tc_lang</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Name/@lang[.!='']" mode="where5"> AND TCategoryNames.tc_lang=@TCategoryNames_tc_lang</xsl:template>
+	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Category/Name/@lang']">,TCategoryNames.tc_lang <xsl:apply-templates select="@type"/></xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Name/@lang[.!='']" mode="param"><parameter name="TCategoryNames_tc_lang" type="xs:string"><xsl:value-of select="."/></parameter></xsl:template>
+	<!--/ns:TTemplates/ns:TTemplate/ns:Category/ns:Description (level 4)-->
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Description[@*|*]" mode="select4">
+		<xsl:variable name="fields"><xsl:apply-templates select="*|@*" mode="select5"/>,TCategoryNames. AS "*"</xsl:variable>
+		<xsl:variable name="where"><xsl:apply-templates select="*|@*" mode="where5"/></xsl:variable>
+		<xsl:apply-templates select="." mode="indent4"/>,(SELECT <xsl:value-of select="substring-after($fields,',')"/>
+		<xsl:apply-templates select="." mode="indent5"/>FROM transaction_categories_names TCategoryNames<xsl:apply-templates select=".|*|@*" mode="SubTable5"/>
+		<xsl:apply-templates select="." mode="indent5"/>WHERE TCategoryNames.tc_id=TCategoryType.tc_id <xsl:value-of select="normalize-space($where)"/>
+		<xsl:apply-templates select="." mode="indent5"/>FOR XML PATH('Description'), type)</xsl:template>
+	<!--/ns:TTemplates/ns:TTemplate/ns:Category/ns:Description/@lang-->
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Description/@lang" mode="alias">"@lang"</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Description/@lang" mode="fieldName">TCategoryNames.tc_lang</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Description/@lang" mode="fieldValue">@TCategoryNames_tc_lang</xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Description/@lang[.!='']" mode="where5"> AND TCategoryNames.tc_lang=@TCategoryNames_tc_lang</xsl:template>
+	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Category/Description/@lang']">,TCategoryNames.tc_lang <xsl:apply-templates select="@type"/></xsl:template>
+	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Category/ns:Description/@lang[.!='']" mode="param"><parameter name="TCategoryNames_tc_lang" type="xs:string"><xsl:value-of select="."/></parameter></xsl:template>
 	<!--/ns:TTemplates/ns:TTemplate/ns:Items (level 3)-->
 	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items[@*|*]" mode="select3">
 		<xsl:variable name="fields"><xsl:apply-templates select="*|@*" mode="select4"/>
@@ -279,21 +325,7 @@
 		<xsl:apply-templates select="." mode="indent6"/>,(SELECT <xsl:value-of select="substring-after($fields,',')"/>
 		<xsl:apply-templates select="." mode="indent7"/>FOR XML PATH('Currency'), type)</xsl:template>
 	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency" mode="SubTable6">
-		<xsl:apply-templates select="." mode="indent6"/><xsl:apply-templates select="." mode="JoinType"/>currency CurrencyType ON CurrencyType.cur_id=AccountType.cur_id</xsl:template>
-	<!--/ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@id-->
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@id" mode="alias">"@id"</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@id" mode="fieldName">CurrencyType.cur_id</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@id" mode="fieldValue">@CurrencyType_cur_id</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@id[.!='']" mode="where7"> AND CurrencyType.cur_id=@CurrencyType_cur_id</xsl:template>
-	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Items/Item/Account/Currency/@id']">,CurrencyType.cur_id <xsl:apply-templates select="@type"/></xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@id[.!='']" mode="param"><parameter name="CurrencyType_cur_id" type="xs:unsignedByte"><xsl:value-of select="."/></parameter></xsl:template>
-	<!--/ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@code-->
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@code" mode="alias">"@code"</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@code" mode="fieldName">CurrencyType.cur_code</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@code" mode="fieldValue">@CurrencyType_cur_code</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@code[.!='']" mode="where7"> AND CurrencyType.cur_code=@CurrencyType_cur_code</xsl:template>
-	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Items/Item/Account/Currency/@code']">,CurrencyType.cur_code <xsl:apply-templates select="@type"/></xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Currency/@code[.!='']" mode="param"><parameter name="CurrencyType_cur_code" type="xs:string"><xsl:value-of select="."/></parameter></xsl:template>
+		<xsl:apply-templates select="." mode="indent6"/><xsl:apply-templates select="." mode="JoinType"/>  ON .=AccountType.cur_id</xsl:template>
 	<!--/ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Changes (level 6)-->
 	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:Account/ns:Changes[@*|*]" mode="select6">
 		<xsl:variable name="fields"><xsl:apply-templates select="*|@*" mode="select7"/>
@@ -434,21 +466,7 @@
 		<xsl:apply-templates select="." mode="indent6"/>,(SELECT <xsl:value-of select="substring-after($fields,',')"/>
 		<xsl:apply-templates select="." mode="indent7"/>FOR XML PATH('Currency'), type)</xsl:template>
 	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency" mode="SubTable6">
-		<xsl:apply-templates select="." mode="indent6"/><xsl:apply-templates select="." mode="JoinType"/>currency CurrencyType ON CurrencyType.cur_id=AccountType.cur_id</xsl:template>
-	<!--/ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@id-->
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@id" mode="alias">"@id"</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@id" mode="fieldName">CurrencyType.cur_id</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@id" mode="fieldValue">@CurrencyType_cur_id</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@id[.!='']" mode="where7"> AND CurrencyType.cur_id=@CurrencyType_cur_id</xsl:template>
-	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Items/Item/PL/Currency/@id']">,CurrencyType.cur_id <xsl:apply-templates select="@type"/></xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@id[.!='']" mode="param"><parameter name="CurrencyType_cur_id" type="xs:unsignedByte"><xsl:value-of select="."/></parameter></xsl:template>
-	<!--/ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@code-->
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@code" mode="alias">"@code"</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@code" mode="fieldName">CurrencyType.cur_code</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@code" mode="fieldValue">@CurrencyType_cur_code</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@code[.!='']" mode="where7"> AND CurrencyType.cur_code=@CurrencyType_cur_code</xsl:template>
-	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Items/Item/PL/Currency/@code']">,CurrencyType.cur_code <xsl:apply-templates select="@type"/></xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Currency/@code[.!='']" mode="param"><parameter name="CurrencyType_cur_code" type="xs:string"><xsl:value-of select="."/></parameter></xsl:template>
+		<xsl:apply-templates select="." mode="indent6"/><xsl:apply-templates select="." mode="JoinType"/>  ON .=AccountType.cur_id</xsl:template>
 	<!--/ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Changes (level 6)-->
 	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:PL/ns:Changes[@*|*]" mode="select6">
 		<xsl:variable name="fields"><xsl:apply-templates select="*|@*" mode="select7"/>
@@ -589,21 +607,7 @@
 		<xsl:apply-templates select="." mode="indent6"/>,(SELECT <xsl:value-of select="substring-after($fields,',')"/>
 		<xsl:apply-templates select="." mode="indent7"/>FOR XML PATH('Currency'), type)</xsl:template>
 	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency" mode="SubTable6">
-		<xsl:apply-templates select="." mode="indent6"/><xsl:apply-templates select="." mode="JoinType"/>currency CurrencyType ON CurrencyType.cur_id=AccountType.cur_id</xsl:template>
-	<!--/ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@id-->
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@id" mode="alias">"@id"</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@id" mode="fieldName">CurrencyType.cur_id</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@id" mode="fieldValue">@CurrencyType_cur_id</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@id[.!='']" mode="where7"> AND CurrencyType.cur_id=@CurrencyType_cur_id</xsl:template>
-	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Items/Item/CF/Currency/@id']">,CurrencyType.cur_id <xsl:apply-templates select="@type"/></xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@id[.!='']" mode="param"><parameter name="CurrencyType_cur_id" type="xs:unsignedByte"><xsl:value-of select="."/></parameter></xsl:template>
-	<!--/ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@code-->
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@code" mode="alias">"@code"</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@code" mode="fieldName">CurrencyType.cur_code</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@code" mode="fieldValue">@CurrencyType_cur_code</xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@code[.!='']" mode="where7"> AND CurrencyType.cur_code=@CurrencyType_cur_code</xsl:template>
-	<xsl:template match="xqbe:Sort[.='/TTemplates/TTemplate/Items/Item/CF/Currency/@code']">,CurrencyType.cur_code <xsl:apply-templates select="@type"/></xsl:template>
-	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Currency/@code[.!='']" mode="param"><parameter name="CurrencyType_cur_code" type="xs:string"><xsl:value-of select="."/></parameter></xsl:template>
+		<xsl:apply-templates select="." mode="indent6"/><xsl:apply-templates select="." mode="JoinType"/>  ON .=AccountType.cur_id</xsl:template>
 	<!--/ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Changes (level 6)-->
 	<xsl:template match="ns:TTemplates/ns:TTemplate/ns:Items/ns:Item/ns:CF/ns:Changes[@*|*]" mode="select6">
 		<xsl:variable name="fields"><xsl:apply-templates select="*|@*" mode="select7"/>

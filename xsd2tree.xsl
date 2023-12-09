@@ -139,12 +139,12 @@
 		<xsl:when test="@name and not(xs:complexContent/xs:restriction)">
 			<xsl:apply-templates select="xs:attribute|xs:attributeGroup"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="."/></xsl:apply-templates>
 			<xsl:apply-templates select="xs:simpleContent|xs:complexContent"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="."/></xsl:apply-templates>
-			<xsl:apply-templates select="(xs:sequence|xs:all|xs:choice)/xs:element|xs:group|./*/xs:group"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="."/></xsl:apply-templates>
+			<xsl:apply-templates select="(xs:sequence|xs:all|xs:choice|xs:sequence/xs:choice|xs:sequence/xs:choice/xs:sequence)/xs:element|xs:group|./*/xs:group"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="."/></xsl:apply-templates>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:apply-templates select="xs:attribute|xs:attributeGroup"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$parentType"/></xsl:apply-templates>
 			<xsl:apply-templates select="xs:simpleContent|xs:complexContent"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$parentType"/></xsl:apply-templates>
-			<xsl:apply-templates select="(xs:sequence|xs:all|xs:choice)/xs:element|xs:group|./*/xs:group"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$parentType"/></xsl:apply-templates>
+			<xsl:apply-templates select="(xs:sequence|xs:all|xs:choice|xs:sequence/xs:choice|xs:sequence/xs:choice/xs:sequence)/xs:element|xs:group|./*/xs:group"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$parentType"/></xsl:apply-templates>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
@@ -182,14 +182,20 @@
 	<xsl:param name="parentType"/>
 	<xsl:apply-templates select="xs:extension/xs:attribute|xs:extension/xs:attributeGroup"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$parentType"/></xsl:apply-templates>
 	<xsl:apply-templates select="xs:extension/*/xs:element"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$parentType"/></xsl:apply-templates>
-	<xsl:apply-templates select="key('complexType',xs:extension/@base)"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$parentType"/></xsl:apply-templates>
+	<xsl:variable name="base">
+		<xsl:apply-templates select="xs:extension/@base"/>
+	</xsl:variable>
+	<xsl:apply-templates select="key('complexType',$base)"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$parentType"/></xsl:apply-templates>
 	<xsl:apply-templates select="xs:restriction"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$parentType"/></xsl:apply-templates>
 </xsl:template>
 
 <xsl:template match="xs:complexContent/xs:restriction">
 	<xsl:param name="path"/>
 	<xsl:param name="parentType"/>
-	<xsl:variable name="complexType" select="key('complexType',@base)"/>
+	<xsl:variable name="base">
+		<xsl:apply-templates select="@base"/>
+	</xsl:variable>
+	<xsl:variable name="complexType" select="key('complexType',$base)"/>
 	<xsl:apply-templates select="$complexType/xs:attribute[@name=current()/xs:attribute/@name]"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$complexType"/></xsl:apply-templates>
 	<xsl:apply-templates select="$complexType/xs:attributeGroup[@ref=current()/attributeGroup/@ref]"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$complexType"/></xsl:apply-templates>
 	<xsl:apply-templates select="$complexType/*/xs:element[@name=current()/*/xs:element[not(@type)]/@name]"><xsl:with-param name="path" select="$path"/><xsl:with-param name="parentType" select="$complexType"/></xsl:apply-templates>
@@ -217,7 +223,7 @@
 	</xsl:choose>
 </xsl:template>
 
-<xsl:template match="@type">
+<xsl:template match="@type | @base">
 	<xsl:choose>
 		<xsl:when test="starts-with(.,$xsdPrefixC)"><xsl:value-of select="."/></xsl:when>
 		<xsl:when test="contains(.,':')"><xsl:value-of select="substring-after(.,':')"/></xsl:when>

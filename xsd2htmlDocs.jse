@@ -6,6 +6,7 @@ try {
 
     var schemaPath = "schema/"
     var schemaFile = "DPIXML_v1.0.xsd"
+    //var schemaFile = "DPIXML_v1.0.xsd"
     var outFile = "xsd2htmlDocs.xhtml"
     var xslFile = "xsd2htmlDocsTest.xsl";
 

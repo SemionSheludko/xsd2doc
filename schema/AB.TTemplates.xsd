@@ -17,8 +17,8 @@
 	</xs:element>
 
 	<xs:complexType name="TTemplateType" sql:table="transaction_templates" sql:key-fields="tt_id">
-		<xs:group ref="TTNames"  minOccurs="0" maxOccurs="unbounded"/>
 		<xs:sequence>
+			<xs:group ref="TTNames"  minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="Category" type="TCategoryType" minOccurs="0" maxOccurs="1" sql:foreign-keys="tc_id" />
 			<xs:element name="Items">
 				<xs:complexType>
@@ -40,8 +40,8 @@
 		<xs:attribute name="type" type="xs:string" use="required" sql:field="tt_type" />
 	</xs:complexType>
 
-	<xs:group name="TTNames" maxOccurs="unbounded" sql:table="transaction_templates_names" sql:foreign-keys="tt_id">
-		<xs:all>
+	<xs:group name="TTNames" sql:table="transaction_templates_names" sql:foreign-keys="tt_id">
+		<xs:sequence>
 			<xs:element name="Name" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:simpleContent>
@@ -50,9 +50,6 @@
 						</xs:extension>
 					</xs:simpleContent>
 				</xs:complexType>
-				<xs:annotation>
-					<xs:documentation xml:lang='ru'>Название категории</xs:documentation>
-				</xs:annotation>
 			</xs:element>
 			<xs:element name="Description" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
@@ -62,11 +59,8 @@
 						</xs:extension>
 					</xs:simpleContent>
 				</xs:complexType>
-				<xs:annotation>
-					<xs:documentation xml:lang='ru'>Комментарии</xs:documentation>
-				</xs:annotation>
 			</xs:element>
-		</xs:all>
+		</xs:sequence>
 	</xs:group>
 
 	<xs:complexType name="TItemType" sql:table="transaction_templates_entries" sql:key-fields="te_id" sql:foreign-keys="tt_id">

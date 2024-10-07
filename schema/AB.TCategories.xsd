@@ -21,8 +21,8 @@
 		<xs:attribute name="type" type="xs:string" use="required" sql:field="tc_type" />
 	</xs:complexType>
 
-	<xs:group name="TCategoryNames" maxOccurs="unbounded" sql:table="transaction_categories_names" sql:foreign-keys="tc_id">
-		<xs:all>
+	<xs:group name="TCategoryNames" sql:table="transaction_categories_names" sql:foreign-keys="tc_id">
+		<xs:sequence>
 			<xs:element name="Name" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:simpleContent>
@@ -31,9 +31,6 @@
 						</xs:extension>
 					</xs:simpleContent>
 				</xs:complexType>
-				<xs:annotation>
-					<xs:documentation xml:lang='ru'>Название категории</xs:documentation>
-				</xs:annotation>
 			</xs:element>
 			<xs:element name="Description" minOccurs="0" maxOccurs="1" sql:field="tc_description">
 				<xs:complexType>
@@ -43,10 +40,7 @@
 						</xs:extension>
 					</xs:simpleContent>
 				</xs:complexType>
-				<xs:annotation>
-					<xs:documentation xml:lang='ru'>Комментарии</xs:documentation>
-				</xs:annotation>
 			</xs:element>
-		</xs:all>
+		</xs:sequence>
 	</xs:group>
 </xs:schema>

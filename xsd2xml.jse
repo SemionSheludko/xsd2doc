@@ -5,7 +5,8 @@ try {
     var xslDoc = new ActiveXObject("Msxml2.FreeThreadedDOMDocument.6.0");
 
     var schemaPath = "schema/"
-    var schemaFile = "AB.Accounts.xsd"
+    //var schemaFile = "AB.Accounts.xsd"
+	var schemaFile = "DPIXML_v1.0.xsd"
     var outFile = "xsd2xml.xml"
     var xslFile = "xsd2xml.xsl";
 
